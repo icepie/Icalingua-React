@@ -1,0 +1,10 @@
+{
+  "name": "icalingua",
+  "version": "1.0.0",
+  "description": "A Linux client for QQ and more",
+  "main": "index.js",
+  "repository": "git@github.com:Icalingua/Icalingua-React.git",
+  "author": "RainbowBird <rbxin2003@outlook.com>",
+  "license": "GPL",
+  "private": false
+}
