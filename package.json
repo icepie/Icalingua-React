@@ -1,10 +1,28 @@
 {
   "name": "icalingua",
-  "version": "1.0.0",
-  "description": "A Linux client for QQ and more",
-  "main": "index.js",
-  "repository": "git@github.com:Icalingua/Icalingua-React.git",
+  "version": "0.0.0",
   "author": "RainbowBird <rbxin2003@outlook.com>",
-  "license": "GPL",
-  "private": false
+  "description": "A client for (maybe) any IM made with Electron",
+  "repository": "git@github.com:Icalingua/Icalingua-React.git",
+  "license": "GPL-3.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-redux": "^7.2.5",
+    "react-router-dom": "^5.3.0",
+    "antd": "^4.16.13"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@vitejs/plugin-react": "^1.0.0",
+    "typescript": "^4.3.2",
+    "vite": "^2.6.0",
+    "electron": "^15.0.0"
+  }
 }
