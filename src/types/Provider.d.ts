@@ -4,5 +4,7 @@ type CookiesDomain = 'tenpay.com' | 'docs.qq.com' | 'office.qq.com' | 'connect.q
   'qun.qq.com' | 'ti.qq.com'
 
 export default interface Provider {
+  createBot(): any;
 
+  isLogin(): boolean;
 }

@@ -1,14 +1,19 @@
 import { Button, Col, Form, Input, Row } from 'antd';
-import React from 'react';
-import { getConfig } from '../providers/configProvider';
+import React, { useEffect } from 'react';
+import { getConfig, saveConfig } from '../providers/configProvider';
+import { provider } from '../providers/socketIoProvider';
 
 export function LoginView() {
   const [form] = Form.useForm();
-  form.setFieldsValue(getConfig());
 
-  function login() {
-    console.log(form.getFieldsValue())
-  }
+  useEffect(() => {
+    form.setFieldsValue(getConfig());
+  }, []);
+
+  const login = async () => {
+    saveConfig(form.getFieldsValue());
+    await provider.createBot();
+  };
 
   return (
     <div>
