@@ -5,6 +5,7 @@ import App from '../App';
 import { LoginView } from '../views/LoginView';
 
 
+// TODO: 改成Object
 export default function Router() {
   let fakeLogin = false;
   return (

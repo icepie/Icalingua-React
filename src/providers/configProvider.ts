@@ -12,9 +12,12 @@ export const initLocalStorage = () => {
   };
 
   for (let conf in config) {
-    if (window.localStorage.getItem(conf) === undefined) {
+    if (window.localStorage.getItem(conf) === null) {
       // @ts-ignore
       window.localStorage.setItem(conf, config[conf]);
+    } else {
+      // @ts-ignore
+      config[conf] = window.localStorage.getItem(conf);
     }
   }
 
@@ -27,8 +30,10 @@ export const saveConfig = (_config: Config) => {
   for (let conf in _config) {
     // @ts-ignore
     window.localStorage.setItem(conf, _config[conf]);
+
+    // @ts-ignore
+    config[conf] = window.localStorage.getItem(conf);
   }
 
-  config = _config;
   return config;
 }
