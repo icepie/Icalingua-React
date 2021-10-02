@@ -1,22 +1,26 @@
 import { Modal, notification } from 'antd';
 import { sign } from 'noble-ed25519';
-import { useHistory, useLocation } from 'react-router';
 import { io, Socket } from 'socket.io-client';
+import { getConfig } from '../providers/configProvider';
 import BridgeVersionInfo from '../types/BridgeVersionInfo';
-import Provider from '../types/Provider';
-import { getConfig } from './configProvider';
+import OnlineData from '../types/OnlineData';
+import Adapter from '../types/Provider';
 
 const EXCEPTED_PROTOCOL_VERSION = '1.2.5';
 
 let socket: Socket;
 let bridgeVersion: BridgeVersionInfo;
+let cachedOnlineData: OnlineData;
 let login: boolean = false;
 
 export const attachSocketEvents = () => {
-
+  socket.on('onlineData', async (data: OnlineData) => {
+    cachedOnlineData = data;
+    console.log(cachedOnlineData);
+  });
 };
 
-export const provider: Provider = {
+export const adapter: Adapter = {
   createBot: async () => {
     socket = io(getConfig().server, {transports: ['websocket']});
     socket.once('connect_error', async (err) => {
@@ -47,7 +51,6 @@ export const provider: Provider = {
       attachSocketEvents();
       login = true;
       notification.success({message: '登录成功', description: `身份验证成功，服务器版本${bridgeVersion.version}`});
-      useLocation().pathname = '/';
     });
 
     socket.once('authFailed', async () => {
