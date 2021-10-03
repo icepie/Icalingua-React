@@ -4,7 +4,7 @@ import { useHistory } from 'react-router';
 import { getConfig, saveConfig } from '../providers/configProvider';
 import { createProvider } from '../providers/socketIoProvider';
 
-export function LoginView() {
+export default function LoginView() {
   const [form] = Form.useForm();
 
   useEffect(() => {

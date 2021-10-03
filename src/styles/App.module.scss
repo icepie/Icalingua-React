@@ -1,0 +1,19 @@
+@import "colors";
+
+.layout {
+  height: 100%;
+}
+
+.sidebar {
+  display: flex;
+  justify-content: center;
+
+  background: $sidebar-color;
+  color: $text-color-white;
+
+  padding: 15px 0;
+}
+
+.main {
+
+}
