@@ -3,8 +3,6 @@ type CookiesDomain = 'tenpay.com' | 'docs.qq.com' | 'office.qq.com' | 'connect.q
   'mma.qq.com' | 'game.qq.com' | 'qqweb.qq.com' | 'openmobile.qq.com' |
   'qun.qq.com' | 'ti.qq.com'
 
-export default interface Provider {
-  createBot(): any;
+export default interface OicqAdapter {
 
-  isLogin(): boolean;
 }

@@ -2,7 +2,7 @@ import { Button, Col, Form, Input, Row } from 'antd';
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { getConfig, saveConfig } from '../providers/configProvider';
-import { adapter } from '../adapters/socketIoAdapter';
+import { createProvider } from '../providers/socketIoProvider';
 
 export function LoginView() {
   const [form] = Form.useForm();
@@ -13,7 +13,7 @@ export function LoginView() {
 
   const login = async () => {
     saveConfig(form.getFieldsValue());
-    await adapter.createBot();
+    await createProvider();
 
     // TODO: 无法使用
     useHistory().push('/');

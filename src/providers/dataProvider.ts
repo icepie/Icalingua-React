@@ -1,9 +1,10 @@
 import { createStoreHook } from 'react-redux';
+import { Store } from 'redux';
 
-let dataStore;
+let dataStore = initDataStore();
 
 export function initDataStore() {
-  dataStore = createStoreHook();
+  return createStoreHook();
 }
 
-export { dataStore };
+export const getDataStore = () => dataStore;
