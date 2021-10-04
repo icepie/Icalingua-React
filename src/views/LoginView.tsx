@@ -6,6 +6,7 @@ import { createProvider } from '../providers/socketIoProvider';
 
 export default function LoginView() {
   const [form] = Form.useForm();
+  const history = useHistory();
 
   useEffect(() => {
     form.setFieldsValue(getConfig());
@@ -15,8 +16,7 @@ export default function LoginView() {
     saveConfig(form.getFieldsValue());
     await createProvider();
 
-    // TODO: 无法使用
-    useHistory().push('/');
+    history.push('/');
   };
 
   return (
