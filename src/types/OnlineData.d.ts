@@ -6,4 +6,4 @@ type OnlineData = {
   sysInfo?: string
 }
 
-export default OnlineData;
+export default OnlineData

@@ -1,3 +1,4 @@
 .eslintrc.js
 .prettierrc.js
 vite.config.ts
+.yarn

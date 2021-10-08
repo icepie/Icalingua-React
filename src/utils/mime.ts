@@ -36,16 +36,15 @@ const mimes = {
   midi: 'audio/midi',
   m4a: 'audio/x-m4a',
   ogg: 'audio/ogg',
-};
+}
 
 export default function mime(ext: string) {
-  ext = ext.toLowerCase();
-  if (ext.startsWith('.'))
-    ext = ext.substr(1);
+  ext = ext.toLowerCase()
+  if (ext.startsWith('.')) ext = ext.substr(1)
   // @ts-ignore
   if (mimes[ext]) {
     // @ts-ignore
-    return mimes[ext];
+    return mimes[ext]
   }
-  return 'application/octet-stream';
+  return 'application/octet-stream'
 }

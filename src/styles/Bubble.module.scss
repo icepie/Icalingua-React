@@ -6,7 +6,7 @@
   margin: 4px;
   padding: 4px 10px;
   font-size: medium;
-  background-color: #F3F3F3;
+  background-color: #f3f3f3;
   color: #303133;
 
   &.senderName {
@@ -15,11 +15,11 @@
     top: 0;
     border-radius: 10px;
     min-width: unset;
-    background-color: rgba(255, 255, 255, 0.80);
+    background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     font-size: small;
     font-weight: bold;
-    color: #D75E92;
+    color: #d75e92;
   }
 
   &:nth-child(2) {

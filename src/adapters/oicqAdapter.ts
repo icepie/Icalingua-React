@@ -1,5 +1,3 @@
-import OicqAdapter from '../types/OicqAdapter';
+import OicqAdapter from '../types/OicqAdapter'
 
-export const oicqAdapter: OicqAdapter = {
-
-};
+export const oicqAdapter: OicqAdapter = {}
