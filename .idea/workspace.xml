@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="a44e63f4-6c42-4715-a4dd-8b3e26c805b6" name="更改" comment="fix: idea" />
+    <list default="true" id="a44e63f4-6c42-4715-a4dd-8b3e26c805b6" name="更改" comment="fix: idea">
+      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/adapters/oicqAdapter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapters/bridgeAdapter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/providers/bridgeProvider.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/bridgeProvider.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/providers/configProvider.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/configProvider.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/providers/dataProvider.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/dataProvider.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routers/routers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/routers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stores/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stores/types/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/BridgeAdapter.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/BridgeAdapter.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/Config.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/Config.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/OnlineData.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/OnlineData.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/LoginView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/LoginView.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,17 +40,33 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="14.17.5" />
     <property name="javascript.nodejs.core.library.typings.version" value="" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="ts.rename.search.for.js.occurrences" value="false" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -39,7 +76,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1633780657322</updated>
-      <workItem from="1633780660993" duration="353000" />
+      <workItem from="1633780660993" duration="6426000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <created>1633780756847</created>
@@ -55,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633780819960</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fix: idea">
+      <created>1633781157807</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1633781157807</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router'
 import { createBridge } from '../providers/bridgeProvider'
 import { getConfig, saveConfig } from '../providers/configProvider'
+import { getBot } from '../providers/dataProvider'
 
 export default function LoginView() {
   const [form] = Form.useForm()
@@ -15,7 +16,6 @@ export default function LoginView() {
   const login = async () => {
     saveConfig(form.getFieldsValue())
     await createBridge()
-
     history.push('/')
   }
 

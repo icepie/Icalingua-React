@@ -5,12 +5,12 @@ import { Bridge } from '../providers/bridgeProvider'
 import styles from '../styles/App.module.scss'
 import { getUserAvatarUrl } from '../utils/apis'
 
-export default function App(bot: Bridge) {
+export default function App({ bot }: { bot: Bridge }) {
   return (
     <Layout className={styles.layout}>
       <Layout.Sider width={'4rem'} className={styles.sidebar}>
-        <Popover title={bot.uin} content={bot.nickname}>
-          <Avatar size={'large'} src={getUserAvatarUrl(bot.uin)} />
+        <Popover title={bot._uin} content={bot._nickname}>
+          <Avatar size={'large'} src={getUserAvatarUrl(bot._uin)} />
         </Popover>
       </Layout.Sider>
       <Layout.Content className={styles.main}>

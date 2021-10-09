@@ -15,4 +15,5 @@ type CookiesDomain =
   | 'ti.qq.com'
 
 export default interface BridgeAdapter {
+
 }

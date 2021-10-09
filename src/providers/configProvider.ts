@@ -2,9 +2,6 @@ import Config from '../types/Config'
 
 export const initLocalStorage = () => {
   let config: Config = {
-    account: 0,
-    password: '',
-    protocol: 1,
     server: '',
     privateKey: '',
   }

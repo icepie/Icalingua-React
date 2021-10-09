@@ -1,42 +1,55 @@
 import { Modal, notification } from 'antd'
 import { sign } from 'noble-ed25519'
 import { io, Socket } from 'socket.io-client'
-import { oicqAdapter } from '../adapters/oicqAdapter'
-import BridgeVersionInfo from '../types/BridgeVersionInfo'
+import { bridgeAdapter } from '../adapters/bridgeAdapter'
 import BridgeAdapter from '../types/BridgeAdapter'
+import BridgeVersionInfo from '../types/BridgeVersionInfo'
 import OnlineData from '../types/OnlineData'
 import { getConfig } from './configProvider'
+import { setBot } from './dataProvider'
 
 const EXCEPTED_PROTOCOL_VERSION = '2.0.0'
 
 export class Bridge {
-  uin?: number = 0
-  nickname?: string = 'NULL'
-  socket: Socket
-  bridgeVersion: BridgeVersionInfo
-  onlineData?: OnlineData
-  connected: boolean = false
-  adapter: BridgeAdapter = oicqAdapter
+  _uin: number = 0
+  _nickname: string = 'NULL'
+  _socket: Socket
+  _bridgeVersion: BridgeVersionInfo
+  _adapter: BridgeAdapter = bridgeAdapter
+  _connected: boolean = false
+  _onlineData?: OnlineData
 
   constructor(socket: Socket, bridgeVersion: BridgeVersionInfo, connected: boolean) {
-    this.socket = socket
-    this.bridgeVersion = bridgeVersion
-    this.connected = connected
+    this._socket = socket
+    this._bridgeVersion = bridgeVersion
+    this._connected = connected
 
     this.attachSocketEvents()
   }
 
-  isConnected = () => this.connected
+  get connected() {
+    return this._connected
+  }
 
-  getOnlineData = () => this.onlineData
+  get onlineData() {
+    return this._onlineData
+  }
+
+  set Uin(uin: number) {
+    this._uin = uin
+  }
+
+  set Nickname(nickname: string) {
+    this._nickname = nickname
+  }
 
   attachSocketEvents = () => {
-    this.socket.on('onlineData', async (data: OnlineData) => {
-      this.uin = data.uin
-      this.nickname = data.nick
-      this.onlineData = data
+    this._socket.on('onlineData', async (data: OnlineData) => {
+      this._uin = data.uin
+      this._nickname = data.nick
+      this._onlineData = data
 
-      console.log(this.onlineData)
+      console.log(this._onlineData)
     })
   }
 }
@@ -44,8 +57,7 @@ export class Bridge {
 export function createBridge() {
   let socket: Socket
   let bridgeVersion: BridgeVersionInfo
-  let connected: boolean = false
-  let provider
+  let bot: Bridge
 
   // 连接服务器
   socket = io(getConfig().server, { transports: ['websocket'] })
@@ -75,19 +87,13 @@ export function createBridge() {
 
   // 监听服务端事件
   socket.once('authSucceed', async () => {
-    connected = true
+    bot = new Bridge(socket, bridgeVersion, true)
+    setBot(bot)
+
     notification.success({ message: '登录成功', description: `身份验证成功，服务器版本${bridgeVersion.version}` })
   })
 
   socket.once('authFailed', async () => {
     notification.error({ message: '错误', description: '认证失败' })
   })
-
-  if (connected) {
-    // @ts-ignore
-    provider = new Bridge(socket, bridgeVersion, connected)
-    return provider
-  } else {
-    return false
-  }
 }
