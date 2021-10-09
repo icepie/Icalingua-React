@@ -11,15 +11,15 @@ import { setBot } from './dataProvider'
 const EXCEPTED_PROTOCOL_VERSION = '2.0.0'
 
 export class Bridge {
-  _uin: number = 0
-  _nickname: string = 'NULL'
-  _socket: Socket
-  _bridgeVersion: BridgeVersionInfo
-  _adapter: BridgeAdapter = bridgeAdapter
-  _connected: boolean = false
-  _onlineData?: OnlineData
+  public _uin = 0
+  public _nickname = 'NULL'
+  public _socket: Socket
+  public _bridgeVersion: BridgeVersionInfo
+  public _adapter: BridgeAdapter = bridgeAdapter
+  public _connected = false
+  public _onlineData?: OnlineData
 
-  constructor(socket: Socket, bridgeVersion: BridgeVersionInfo, connected: boolean) {
+  public constructor(socket: Socket, bridgeVersion: BridgeVersionInfo, connected: boolean) {
     this._socket = socket
     this._bridgeVersion = bridgeVersion
     this._connected = connected
@@ -27,23 +27,31 @@ export class Bridge {
     this.attachSocketEvents()
   }
 
-  get connected() {
+  public get connected() {
     return this._connected
   }
 
-  get onlineData() {
+  public get onlineData() {
     return this._onlineData
   }
 
-  set Uin(uin: number) {
+  public get uin() {
+    return this._uin
+  }
+
+  public set uin(uin: number) {
     this._uin = uin
   }
 
-  set Nickname(nickname: string) {
+  public get nickname() {
+    return this._nickname
+  }
+
+  public set nickname(nickname: string) {
     this._nickname = nickname
   }
 
-  attachSocketEvents = () => {
+  public attachSocketEvents = () => {
     this._socket.on('onlineData', async (data: OnlineData) => {
       this._uin = data.uin
       this._nickname = data.nick

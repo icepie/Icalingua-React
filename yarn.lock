@@ -690,7 +690,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^4.7.0":
+"@typescript-eslint/eslint-plugin@npm:^4.33.0, @typescript-eslint/eslint-plugin@npm:^4.7.0":
   version: 4.33.0
   resolution: "@typescript-eslint/eslint-plugin@npm:4.33.0"
   dependencies:
@@ -728,7 +728,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^4.7.0":
+"@typescript-eslint/parser@npm:^4.33.0, @typescript-eslint/parser@npm:^4.7.0":
   version: 4.33.0
   resolution: "@typescript-eslint/parser@npm:4.33.0"
   dependencies:
@@ -1983,6 +1983,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-config-alloy@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "eslint-config-alloy@npm:4.3.0"
+  checksum: 82d89896d60a064981c177f5ddfe081fe1757eff2fce22eebe68a1f7a1e372fcfec1e89bb1820fa235cf257539d0d7fdf7f3e4dc874d234610ce39e131b6eb0f
+  languageName: node
+  linkType: hard
+
 "eslint-config-prettier@npm:^6.15.0":
   version: 6.15.0
   resolution: "eslint-config-prettier@npm:6.15.0"
@@ -2086,7 +2093,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react@npm:^7.21.5":
+"eslint-plugin-react@npm:^7.21.5, eslint-plugin-react@npm:^7.26.1":
   version: 7.26.1
   resolution: "eslint-plugin-react@npm:7.26.1"
   dependencies:
@@ -2692,11 +2699,15 @@ fsevents@~2.3.2:
     "@types/react": ^17.0.0
     "@types/react-dom": ^17.0.0
     "@types/react-router-dom": ^5.3.0
+    "@typescript-eslint/eslint-plugin": ^4.33.0
+    "@typescript-eslint/parser": ^4.33.0
     "@vitejs/plugin-react": ^1.0.0
     antd: ^4.16.13
     axios: ^0.21.4
     eslint: ^7.32.0
     eslint-config-airbnb-typescript-prettier: ^4.2.0
+    eslint-config-alloy: ^4.3.0
+    eslint-plugin-react: ^7.26.1
     md5: ^2.3.0
     mockjs: ^1.1.0
     moment: ^2.29.1
@@ -2710,7 +2721,7 @@ fsevents@~2.3.2:
     react-router-dom: ^5.3.0
     sass: ^1.42.1
     socket.io-client: ^4.2.0
-    typescript: ^4.3.2
+    typescript: ^4.4.3
     vite: ^2.6.0
     vite-plugin-mock: ^2.9.6
   languageName: unknown
@@ -5211,7 +5222,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-typescript@^4.3.2:
+typescript@^4.4.3:
   version: 4.4.3
   resolution: "typescript@npm:4.4.3"
   bin:
@@ -5221,7 +5232,7 @@ typescript@^4.3.2:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.3.2#~builtin<compat/typescript>":
+"typescript@patch:typescript@^4.4.3#~builtin<compat/typescript>":
   version: 4.4.3
   resolution: "typescript@patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"
   bin:

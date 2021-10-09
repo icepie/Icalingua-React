@@ -6,17 +6,17 @@ import App from '../views/App'
 import LoginView from '../views/LoginView'
 
 export default function Router() {
-  let bot = getBot()
+  const bot = getBot()
 
   return (
     <BrowserRouter>
       <ConfigProvider locale={zhCN}>
         <Switch>
-          <Route path={'/'} exact={true}>
-            {bot !== null ? <App bot={bot} /> : <Redirect to={'/login'} />}
+          <Route path="/" exact={true}>
+            {bot !== null ? <App bot={bot} /> : <Redirect to="/login" />}
           </Route>
-          <Route path={'/login'} exact={true}>
-            {bot === null ? <LoginView /> : <Redirect to={'/'} />}
+          <Route path="/login" exact={true}>
+            {bot === null ? <LoginView /> : <Redirect to="/" />}
           </Route>
         </Switch>
       </ConfigProvider>
