@@ -673,11 +673,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
 "@typescript-eslint/eslint-plugin@npm:^4.33.0":
-=======
-"@typescript-eslint/eslint-plugin@npm:^4.33.0, @typescript-eslint/eslint-plugin@npm:^4.7.0":
->>>>>>> 336fa807c09b9d747cd3f7fadf7ef3ab9f048b45
   version: 4.33.0
   resolution: "@typescript-eslint/eslint-plugin@npm:4.33.0"
   dependencies:
@@ -2419,10 +2415,6 @@ fsevents@~2.3.2:
     antd: ^4.16.13
     axios: ^0.21.4
     eslint: ^7.32.0
-<<<<<<< HEAD
-=======
-    eslint-config-airbnb-typescript-prettier: ^4.2.0
->>>>>>> 336fa807c09b9d747cd3f7fadf7ef3ab9f048b45
     eslint-config-alloy: ^4.3.0
     eslint-plugin-react: ^7.26.1
     md5: ^2.3.0
