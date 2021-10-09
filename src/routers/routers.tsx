@@ -12,11 +12,11 @@ export default function Router() {
     <BrowserRouter>
       <ConfigProvider locale={zhCN}>
         <Switch>
-          <Route path={'/'} exact={true}>
-            {bot !== null ? <App bot={bot} /> : <Redirect to={'/login'} />}
+          <Route path="/" exact={true}>
+            {bot !== null ? <App bot={bot} /> : <Redirect to="/login" />}
           </Route>
-          <Route path={'/login'} exact={true}>
-            {bot === null ? <LoginView /> : <Redirect to={'/'} />}
+          <Route path="/login" exact={true}>
+            {bot === null ? <LoginView /> : <Redirect to="/" />}
           </Route>
         </Switch>
       </ConfigProvider>

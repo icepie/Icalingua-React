@@ -1,5 +1,5 @@
 const mimes = {
-  //https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img
+  // https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img
   apng: 'image/apng',
   avif: 'image/avif',
   bmp: 'image/bmp',
@@ -17,7 +17,7 @@ const mimes = {
   tiff: 'image/tiff',
   webp: 'image/webp',
 
-  //https://blog.csdn.net/xue251248603/article/details/52982263
+  // https://blog.csdn.net/xue251248603/article/details/52982263
   flv: 'video/x-flv',
   mp4: 'video/mp4',
   ts: 'video/MP2T',
@@ -30,7 +30,7 @@ const mimes = {
   ogv: 'video/ogg',
   mpeg: 'video/mpeg',
 
-  //https://www.dute.org/mime-type
+  // https://www.dute.org/mime-type
   mp3: 'audio/mpeg',
   mid: 'audio/midi',
   midi: 'audio/midi',
@@ -39,12 +39,12 @@ const mimes = {
 }
 
 export default function mime(ext: string) {
-  ext = ext.toLowerCase()
-  if (ext.startsWith('.')) ext = ext.substr(1)
+  let extLowerCase = ext.toLowerCase()
+  if (extLowerCase.startsWith('.')) extLowerCase = extLowerCase.substr(1)
   // @ts-ignore
-  if (mimes[ext]) {
+  if (mimes[extLowerCase]) {
     // @ts-ignore
-    return mimes[ext]
+    return mimes[extLowerCase]
   }
   return 'application/octet-stream'
 }
