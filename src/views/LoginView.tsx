@@ -1,8 +1,8 @@
 import { Button, Col, Form, Input, Row } from 'antd'
 import React, { useEffect } from 'react'
 import { useHistory } from 'react-router'
+import { createBridge } from '../providers/bridgeProvider'
 import { getConfig, saveConfig } from '../providers/configProvider'
-import { createProvider } from '../providers/socketIoProvider'
 
 export default function LoginView() {
   const [form] = Form.useForm()
@@ -14,7 +14,7 @@ export default function LoginView() {
 
   const login = async () => {
     saveConfig(form.getFieldsValue())
-    await createProvider()
+    await createBridge()
 
     history.push('/')
   }

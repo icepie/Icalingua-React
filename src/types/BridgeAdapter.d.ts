@@ -14,4 +14,5 @@ type CookiesDomain =
   | 'qun.qq.com'
   | 'ti.qq.com'
 
-export default interface OicqAdapter {}
+export default interface BridgeAdapter {
+}

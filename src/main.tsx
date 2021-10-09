@@ -5,7 +5,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { initLocalStorage } from './providers/configProvider'
 import { initDataStore } from './providers/dataProvider'
-import { createProvider } from './providers/socketIoProvider'
 import Router from './routers/routers'
 import './styles/global.scss'
 

@@ -1,11 +1,11 @@
-import { MessageElem } from 'oicq'
-import Message from '../types/Message'
-import path from 'path'
-import mime from './mime'
 import { base64decode } from 'nodejs-base64/src/index'
+import { MessageElem } from 'oicq'
+import path from 'path'
 import BilibiliMiniApp from '../types/BilibiliMiniApp'
+import Message from '../types/Message'
 import StructMessageCard from '../types/StructMessageCard'
-import getImageUrlByMd5 from './getImageUrlByMd5'
+import { getImageUrlByMd5 } from './apis'
+import mime from './mime'
 
 export default async function processMessage(oicqMessage: MessageElem[]) {
   if (!Array.isArray(oicqMessage)) oicqMessage = [oicqMessage]
@@ -70,7 +70,8 @@ export default async function processMessage(oicqMessage: MessageElem[]) {
             const content = base64decode(jsonObj.meta.mannounce.text)
             message.content = title + '\n\n' + content
             break
-          } catch (err) {}
+          } catch (err) {
+          }
         }
         const biliRegex = /(https?:\\?\/\\?\/b23\.tv\\?\/\w*)\??/
         const zhihuRegex = /(https?:\\?\/\\?\/\w*\.?zhihu\.com\\?\/[^?"=]*)\??/
@@ -95,7 +96,8 @@ export default async function processMessage(oicqMessage: MessageElem[]) {
               type: 'image/jpeg',
               url: previewUrl,
             }
-          } catch (e) {}
+          } catch (e) {
+          }
 
           message.content += appurl
         } else {

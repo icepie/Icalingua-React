@@ -1,3 +1,3 @@
-import OicqAdapter from '../types/OicqAdapter'
+import BridgeAdapter from '../types/BridgeAdapter'
 
-export const oicqAdapter: OicqAdapter = {}
+export const oicqAdapter: BridgeAdapter = {}

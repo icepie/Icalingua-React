@@ -1,11 +1,11 @@
 import { Avatar, Layout, Popover } from 'antd'
 import React from 'react'
 import ChatRoom from '../components/ChatRoom'
-import { Provider } from '../providers/socketIoProvider'
+import { Bridge } from '../providers/bridgeProvider'
 import styles from '../styles/App.module.scss'
 import { getUserAvatarUrl } from '../utils/apis'
 
-export default function App(bot: Provider) {
+export default function App(bot: Bridge) {
   return (
     <Layout className={styles.layout}>
       <Layout.Sider width={'4rem'} className={styles.sidebar}>

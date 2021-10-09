@@ -1,10 +1,10 @@
 import styles from '../styles/SenderContainer.module.scss'
 import SenderGroup from '../types/SenderGroup'
 import getUserAvatarUrl from '../utils/getUserAvatarUrl'
-import SenderNameBubble from './SenderNameBubble'
 import MessageBubble from './MessageBubble'
+import SenderNameBubble from './SenderNameBubble'
 
-export default function SenderContainer({ group }: { group: SenderGroup }) {
+export default function SenderContainer({group}: { group: SenderGroup }) {
   return (
     <div className={styles.container}>
       <div className={styles.avatarContainer}>

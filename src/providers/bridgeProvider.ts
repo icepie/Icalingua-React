@@ -3,20 +3,20 @@ import { sign } from 'noble-ed25519'
 import { io, Socket } from 'socket.io-client'
 import { oicqAdapter } from '../adapters/oicqAdapter'
 import BridgeVersionInfo from '../types/BridgeVersionInfo'
-import OicqAdapter from '../types/OicqAdapter'
+import BridgeAdapter from '../types/BridgeAdapter'
 import OnlineData from '../types/OnlineData'
 import { getConfig } from './configProvider'
 
 const EXCEPTED_PROTOCOL_VERSION = '2.0.0'
 
-export class Provider {
-  uin: number = 0
-  nickname: string = 'NULL'
+export class Bridge {
+  uin?: number = 0
+  nickname?: string = 'NULL'
   socket: Socket
   bridgeVersion: BridgeVersionInfo
   onlineData?: OnlineData
   connected: boolean = false
-  adapter: OicqAdapter = oicqAdapter
+  adapter: BridgeAdapter = oicqAdapter
 
   constructor(socket: Socket, bridgeVersion: BridgeVersionInfo, connected: boolean) {
     this.socket = socket
@@ -41,7 +41,7 @@ export class Provider {
   }
 }
 
-export function createProvider() {
+export function createBridge() {
   let socket: Socket
   let bridgeVersion: BridgeVersionInfo
   let connected: boolean = false
@@ -85,7 +85,7 @@ export function createProvider() {
 
   if (connected) {
     // @ts-ignore
-    provider = new Provider(socket, bridgeVersion, connected)
+    provider = new Bridge(socket, bridgeVersion, connected)
     return provider
   } else {
     return false

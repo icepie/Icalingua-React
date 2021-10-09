@@ -1,5 +1,4 @@
 import { createStoreHook } from 'react-redux'
-import { Store } from 'redux'
 
 let dataStore = initDataStore()
 
