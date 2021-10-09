@@ -3,7 +3,6 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router'
 import { createBridge } from '../providers/bridgeProvider'
 import { getConfig, saveConfig } from '../providers/configProvider'
-import { getBot } from '../providers/dataProvider'
 
 export default function LoginView() {
   const [form] = Form.useForm()
@@ -21,17 +20,17 @@ export default function LoginView() {
 
   return (
     <div>
-      <Row className={'box'} justify={'center'}>
+      <Row className="box" justify="center">
         <Col span={8}>
-          <Form layout={'vertical'} form={form}>
-            <Form.Item label={'服务器地址'} name={'server'}>
+          <Form layout="vertical" form={form}>
+            <Form.Item label="服务器地址" name="server">
               <Input />
             </Form.Item>
-            <Form.Item label={'私钥'} name={'privateKey'}>
+            <Form.Item label="私钥" name="privateKey">
               <Input />
             </Form.Item>
 
-            <Button htmlType={'submit'} onClick={login}>
+            <Button htmlType="submit" onClick={login}>
               登录
             </Button>
           </Form>

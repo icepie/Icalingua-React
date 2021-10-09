@@ -6,9 +6,12 @@ import BridgeAdapter from '../types/BridgeAdapter'
 import BridgeVersionInfo from '../types/BridgeVersionInfo'
 import OnlineData from '../types/OnlineData'
 import { getConfig } from './configProvider'
-import { setBot } from './dataProvider'
 
 const EXCEPTED_PROTOCOL_VERSION = '2.0.0'
+
+let _bot: Bridge
+
+export const getBot = () => _bot
 
 export class Bridge {
   public _uin = 0
@@ -96,7 +99,8 @@ export function createBridge() {
   // 监听服务端事件
   socket.once('authSucceed', async () => {
     bot = new Bridge(socket, bridgeVersion, true)
-    setBot(bot)
+    _bot = bot
+    // setBot(bot)
 
     notification.success({ message: '登录成功', description: `身份验证成功，服务器版本${bridgeVersion.version}` })
   })
