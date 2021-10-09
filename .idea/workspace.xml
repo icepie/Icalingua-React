@@ -4,24 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a44e63f4-6c42-4715-a4dd-8b3e26c805b6" name="更改" comment="fix: idea">
+    <list default="true" id="a44e63f4-6c42-4715-a4dd-8b3e26c805b6" name="更改" comment="TODO: 暂时用localStorage存储bridge实例">
       <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/adapters/oicqAdapter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/adapters/bridgeAdapter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/providers/bridgeProvider.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/bridgeProvider.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/providers/configProvider.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/configProvider.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/providers/dataProvider.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/dataProvider.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routers/routers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/routers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stores/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stores/types/index.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/BridgeAdapter.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/BridgeAdapter.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/Config.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/Config.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/OnlineData.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/OnlineData.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/LoginView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/LoginView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +32,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="code.cleanup.on.save" value="true" />
+    <property name="format.on.save" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="14.17.5" />
     <property name="javascript.nodejs.core.library.typings.version" value="" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -50,13 +43,15 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="optimize.imports.on.save" value="true" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
+    <property name="rearrange.code.on.save" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="ts.rename.search.for.js.occurrences" value="false" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.lint">
     <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -67,6 +62,20 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="lint" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="lint" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.lint" />
+      <item itemvalue="npm.dev" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -76,7 +85,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1633780657322</updated>
-      <workItem from="1633780660993" duration="6426000" />
+      <workItem from="1633780660993" duration="8251000" />
     </task>
     <task id="LOCAL-00001" summary="fix">
       <created>1633780756847</created>
@@ -99,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633781157807</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="TODO: 暂时用localStorage存储bridge实例">
+      <created>1633787397750</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1633787397750</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,7 +135,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix" />
     <MESSAGE value="fix: idea" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: idea" />
+    <MESSAGE value="TODO: 暂时用localStorage存储bridge实例" />
+    <option name="LAST_COMMIT_MESSAGE" value="TODO: 暂时用localStorage存储bridge实例" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

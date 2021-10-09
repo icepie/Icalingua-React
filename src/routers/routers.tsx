@@ -6,7 +6,7 @@ import App from '../views/App'
 import LoginView from '../views/LoginView'
 
 export default function Router() {
-  let bot = getBot()
+  const bot = getBot()
 
   return (
     <BrowserRouter>
