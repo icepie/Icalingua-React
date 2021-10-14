@@ -14,7 +14,6 @@ export default function LoginView() {
 
   const login = async () => {
     saveConfig(form.getFieldsValue())
-    await createBridge()
     history.push('/')
   }
 

@@ -1,25 +1,31 @@
-import { ConfigProvider } from 'antd'
-import zhCN from 'antd/lib/locale/zh_CN'
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
-import { getBot } from '../providers/bridgeProvider'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { Bridge, createBridge } from '../providers/bridgeProvider'
+import { getConfig } from '../providers/configProvider'
+import { account } from '../providers/eventProvider'
 import App from '../views/App'
 import LoginView from '../views/LoginView'
 
 export default function Router() {
-  const bot = getBot()
+  let _bot: Bridge | undefined
+
+  if (getConfig().server === '' || getConfig().privateKey === '') {
+    return <LoginView />
+  } else {
+    createBridge()
+
+    account.on('login', (bot: Bridge) => {
+      _bot = bot
+      return <App bot={_bot} />
+    })
+  }
 
   return (
     <BrowserRouter>
-      <ConfigProvider locale={zhCN}>
-        <Switch>
-          <Route path="/" exact={true}>
-            {bot !== undefined ? <App bot={bot} /> : <Redirect to="/login" />}
-          </Route>
-          <Route path="/login" exact={true}>
-            {bot === undefined ? <LoginView /> : <Redirect to="/" />}
-          </Route>
-        </Switch>
-      </ConfigProvider>
+      <Switch>
+        <Route path="/login" exact={true}>
+          <LoginView />
+        </Route>
+      </Switch>
     </BrowserRouter>
   )
 }

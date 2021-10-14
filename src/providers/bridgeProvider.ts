@@ -1,29 +1,22 @@
 import { Modal, notification } from 'antd'
 import { sign } from 'noble-ed25519'
 import { io, Socket } from 'socket.io-client'
-import { bridgeAdapter } from '../adapters/bridgeAdapter'
-import BridgeAdapter from '../types/BridgeAdapter'
 import BridgeVersionInfo from '../types/BridgeVersionInfo'
 import OnlineData from '../types/OnlineData'
 import { getConfig } from './configProvider'
+import { account } from './eventProvider'
 
 const EXCEPTED_PROTOCOL_VERSION = '2.0.0'
-
-let _bot: Bridge
-
-export const getBot = () => _bot
+let socket: Socket
 
 export class Bridge {
   public _uin = 0
   public _nickname = 'NULL'
-  public _socket: Socket
   public _bridgeVersion: BridgeVersionInfo
-  public _adapter: BridgeAdapter = bridgeAdapter
   public _connected = false
   public _onlineData?: OnlineData
 
-  public constructor(socket: Socket, bridgeVersion: BridgeVersionInfo, connected: boolean) {
-    this._socket = socket
+  public constructor(bridgeVersion: BridgeVersionInfo, connected: boolean) {
     this._bridgeVersion = bridgeVersion
     this._connected = connected
 
@@ -55,7 +48,7 @@ export class Bridge {
   }
 
   public attachSocketEvents = () => {
-    this._socket.on('onlineData', async (data: OnlineData) => {
+    socket.on('onlineData', async (data: OnlineData) => {
       this._uin = data.uin
       this._nickname = data.nick
       this._onlineData = data
@@ -66,7 +59,6 @@ export class Bridge {
 }
 
 export function createBridge() {
-  let socket: Socket
   let bridgeVersion: BridgeVersionInfo
   let bot: Bridge
 
@@ -98,14 +90,15 @@ export function createBridge() {
 
   // 监听服务端事件
   socket.once('authSucceed', async () => {
-    bot = new Bridge(socket, bridgeVersion, true)
-    _bot = bot
-    // setBot(bot)
+    bot = new Bridge(bridgeVersion, true)
 
-    notification.success({ message: '登录成功', description: `身份验证成功，服务器版本${bridgeVersion.version}` })
+    console.log(`登录成功，服务器版本${bridgeVersion.version}`)
+    // notification.success({ message: '登录成功', description: `身份验证成功，服务器版本${bridgeVersion.version}` })
+
+    account.emit('login', bot)
   })
 
   socket.once('authFailed', async () => {
-    notification.error({ message: '错误', description: '认证失败' })
+    notification.error({ message: '登录失败', description: '认证失败' })
   })
 }
