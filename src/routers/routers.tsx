@@ -1,29 +1,19 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { Bridge, createBridge } from '../providers/bridgeProvider'
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import { getConfig } from '../providers/configProvider'
-import { account } from '../providers/eventProvider'
-import App from '../views/App'
 import LoginView from '../views/LoginView'
+import App from '../views/App'
 
 export default function Router() {
-  let _bot: Bridge | undefined
-
-  if (getConfig().server === '' || getConfig().privateKey === '') {
-    return <LoginView />
-  } else {
-    createBridge()
-
-    account.on('login', (bot: Bridge) => {
-      _bot = bot
-      return <App bot={_bot} />
-    })
-  }
+  let requireLogin = getConfig().server === '' || getConfig().privateKey === ''
 
   return (
     <BrowserRouter>
       <Switch>
+        <Route path="/" exact={true}>
+          {requireLogin ? <Redirect to="/login" /> : <App />}
+        </Route>
         <Route path="/login" exact={true}>
-          <LoginView />
+          {requireLogin ? <LoginView /> : <App />}
         </Route>
       </Switch>
     </BrowserRouter>

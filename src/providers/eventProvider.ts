@@ -7,3 +7,7 @@ export let account = new Emitter
 account.on('login', (bot: Bridge) => {
   console.log(bot)
 })
+
+account.on('updateBot', (bot: Bridge) => {
+  console.log(bot)
+})

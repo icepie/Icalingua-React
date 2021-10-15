@@ -1,7 +1,6 @@
 import { Button, Col, Form, Input, Row } from 'antd'
 import React, { useEffect } from 'react'
 import { useHistory } from 'react-router'
-import { createBridge } from '../providers/bridgeProvider'
 import { getConfig, saveConfig } from '../providers/configProvider'
 
 export default function LoginView() {

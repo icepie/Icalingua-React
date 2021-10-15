@@ -53,7 +53,7 @@ export class Bridge {
       this._nickname = data.nick
       this._onlineData = data
 
-      console.log(this._onlineData)
+      account.emit('updateBot', this)
     })
   }
 }
