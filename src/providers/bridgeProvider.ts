@@ -1,10 +1,10 @@
-import { Modal, notification } from 'antd'
+import { Modal } from 'antd'
 import { sign } from 'noble-ed25519'
 import { io, Socket } from 'socket.io-client'
 import BridgeVersionInfo from '../types/BridgeVersionInfo'
 import OnlineData from '../types/OnlineData'
 import { getConfig } from './configProvider'
-import { account } from './eventProvider'
+import { account, ui } from './eventProvider'
 
 const EXCEPTED_PROTOCOL_VERSION = '2.0.0'
 let socket: Socket
@@ -65,7 +65,7 @@ export function createBridge() {
   // 连接服务器
   socket = io(getConfig().server, { transports: ['websocket'] })
   socket.once('connect_error', async () => {
-    notification.error({ message: '与服务器连接失败', description: '请检查服务器地址&协议是否填写正确' })
+    account.emit('loginFailed', { message: '登录失败', description: '与服务器连接失败，请检查服务器地址&协议是否填写正确' })
   })
 
   // 验证身份
@@ -75,7 +75,7 @@ export function createBridge() {
 
     if (version.protocolVersion !== EXCEPTED_PROTOCOL_VERSION) {
       Modal.confirm({
-        title: '提示',
+        title: '是否继续？',
         content: `当前版本的 Icalingua 要求 Bridge 的协议版本为 ${EXCEPTED_PROTOCOL_VERSION}，而服务器的协议版本为 ${version.protocolVersion}`,
         onCancel: () => {
           isConfirm = false
@@ -92,13 +92,12 @@ export function createBridge() {
   socket.once('authSucceed', async () => {
     bot = new Bridge(bridgeVersion, true)
 
-    console.log(`登录成功，服务器版本${bridgeVersion.version}`)
-    // notification.success({ message: '登录成功', description: `身份验证成功，服务器版本${bridgeVersion.version}` })
-
-    account.emit('login', bot)
+    account.emit('loginSuccess', bot)
+    ui.emit('showSuccess', { message: '登录成功', description: `身份验证成功，服务器版本${bridgeVersion.version}` })
   })
 
   socket.once('authFailed', async () => {
-    notification.error({ message: '登录失败', description: '认证失败' })
+    account.emit('loginFailed')
+    ui.emit('showError', { message: '登录失败', description: '认证失败' })
   })
 }
