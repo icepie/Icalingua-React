@@ -90,7 +90,19 @@
   }
 
   .sidebarContent {
+    .foldersTabs {
+      --menu-size: 3rem;
+      --scrollable-size: var(--menu-size);
+      height: var(--scrollable-size);
+      z-index: 1;
+      background-color: $surface-color;
+      position: relative;
+      top: unset;
+    }
 
+    .tabsContainer {
+      display: grid;
+    }
   }
 }
 
