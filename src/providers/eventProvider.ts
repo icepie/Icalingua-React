@@ -1,4 +1,5 @@
 import { notification } from 'antd'
+import { ArgsProps } from 'antd/lib/notification'
 import Emitter from 'component-emitter'
 import { useHistory } from 'react-router'
 import { Bridge } from './bridgeProvider'
@@ -21,22 +22,22 @@ account.on('updateBot', (bot: Bridge) => {
 })
 
 // UI && Logger
-ui.on('showMessage', (message: String, description?: String) => {
-  notification.info({ message: message, description: description })
-  console.info(`${message} ${description}`)
+ui.on('showMessage', (args: ArgsProps) => {
+  notification.info({ ...args })
+  console.info(`Info: [${args.message}] ${args.description}`)
 })
 
-ui.on('showSuccess', (message: String, description?: String) => {
-  notification.success({ message: message, description: description })
-  console.info(`${message} ${description}`)
+ui.on('showSuccess', (args: ArgsProps) => {
+  notification.success({ ...args })
+  console.info(`Success: [${args.message}] ${args.description}`)
 })
 
-ui.on('showWarning', (message: String, description?: String) => {
-  notification.warn({ message: message, description: description })
-  console.warn(`${message} ${description}`)
+ui.on('showWarning', (args: ArgsProps) => {
+  notification.warn({ ...args })
+  console.warn(`Warning: [${args.message}] ${args.description}`)
 })
 
-ui.on('showError', (message: String, description?: String) => {
-  notification.error({ message: message, description: description })
-  console.error(`${message} ${description}`)
+ui.on('showError', (args: ArgsProps) => {
+  notification.error({ ...args })
+  console.error(`Error: [${args.message}] ${args.description}`)
 })
