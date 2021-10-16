@@ -6,7 +6,7 @@
 
 .chatSidebar {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   min-width: 18rem;
   max-width: calc(1680px / 4);
@@ -21,6 +21,7 @@
     padding: 0 1rem;
     align-items: center;
     background: $surface-color;
+    min-height: 3.5rem;
 
     .menuButton {
       display: flex;
@@ -34,6 +35,10 @@
 
       &:hover {
         background-color: $light-secondary-text-color;
+      }
+
+      .menuIcon {
+        font-size: 18px;
       }
     }
 
@@ -57,7 +62,12 @@
         border-color: $input-search-border-color;
         line-height: var(--height);
         border-radius: var(--border-radius);
-        color: $primary-text-color;
+        font-size: 16px;
+
+        &::-webkit-input-placeholder {
+          color: $secondary-text-color !important;
+          font-size: 16px;
+        }
       }
 
       .searchIcon {

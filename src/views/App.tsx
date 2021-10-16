@@ -23,7 +23,7 @@ export default function App() {
         <div className={styles.chatSidebar}>
           <div className={styles.sidebarHead}>
             <Button shape="round" className={styles.menuButton}>
-              <MenuOutlined />
+              <MenuOutlined className={styles.menuIcon}/>
             </Button>
             {
               // <Popover title={bot.uin} content={bot.nickname}>
