@@ -1,10 +1,10 @@
-import { Avatar, Layout, Popover } from 'antd'
+import { MenuOutlined, SearchOutlined } from '@ant-design/icons'
+import { Button, Input } from 'antd'
 import React, { useEffect, useState } from 'react'
 import ChatRoom from '../components/ChatRoom'
 import { Bridge, createBridge } from '../providers/bridgeProvider'
 import { account } from '../providers/eventProvider'
 import styles from '../styles/App.module.scss'
-import { getUserAvatarUrl } from '../utils/apis'
 
 export default function App() {
   const [bot, setBot] = useState<Bridge>()
@@ -18,17 +18,30 @@ export default function App() {
   }, [])
 
   return (
-    <Layout className={styles.layout}>
+    <div className={styles.layout}>
       {bot && <>
-        <Layout.Sider width="4rem" className={styles.sidebar}>
-          <Popover title={bot.uin} content={bot.nickname}>
-            <Avatar size="large" src={getUserAvatarUrl(bot.uin)} />
-          </Popover>
-        </Layout.Sider>
-        <Layout.Content className={styles.main}>
+        <div className={styles.chatSidebar}>
+          <div className={styles.sidebarHead}>
+            <Button shape="round" className={styles.menuButton}>
+              <MenuOutlined />
+            </Button>
+            {
+              // <Popover title={bot.uin} content={bot.nickname}>
+              // <Avatar size="large" src={getUserAvatarUrl(bot.uin)} />
+              // </Popover>
+            }
+            <div className={styles.searchBox}>
+              <Input placeholder="Search" className={styles.searchInput} />
+              <SearchOutlined className={styles.searchIcon} />
+            </div>
+          </div>
+          <div className={styles.sidebarContent} />
+
+        </div>
+        <div className={styles.chatContainer}>
           <ChatRoom />
-        </Layout.Content>
+        </div>
       </>}
-    </Layout>
+    </div>
   )
 }

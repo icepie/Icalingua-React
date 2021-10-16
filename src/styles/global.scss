@@ -1,3 +1,5 @@
+@import "colors";
+
 * {
   padding: 0;
   margin: 0;
@@ -8,6 +10,8 @@ html,
 body,
 #root {
   height: 100%;
+  color: $primary-text-color;
+  background-color: $body-background-color;
 }
 
 body {
@@ -24,4 +28,9 @@ code {
 
 .box {
   margin: 20px;
+}
+
+input::-webkit-input-placeholder {
+  color: $light-primary-color;
+  font-size: 16px;
 }

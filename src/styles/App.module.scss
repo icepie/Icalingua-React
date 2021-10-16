@@ -4,15 +4,85 @@
   height: 100%;
 }
 
-.sidebar {
+.chatSidebar {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  min-width: 18rem;
+  max-width: calc(1680px / 4);
+  height: 100%;
 
-  background: $sidebar-color;
-  color: $text-color-white;
+  background: $surface-color;
 
-  padding: 15px 0;
+  border-right: 1px solid #303133;
+
+  .sidebarHead {
+    display: flex;
+    padding: 0 1rem;
+    align-items: center;
+    background: $surface-color;
+
+    .menuButton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $secondary-text-color;
+
+      width: 2.5rem;
+      height: 2.5rem;
+      border: none;
+
+      &:hover {
+        background-color: $light-secondary-text-color;
+      }
+    }
+
+    .searchBox {
+      position: relative;
+      width: 100%;
+      margin-left: .4375rem;
+      margin-right: .4375rem;
+      overflow: hidden;
+      --border-radius: 22px;
+      border-radius: var(--border-radius);
+
+      .searchInput {
+        --border-width: 1px;
+        --height: 42px;
+        background-color: $input-search-background-color;
+        padding: 0 calc(var(--height) + 3px - var(--border-width));
+        height: var(--height);
+        min-height: var(--height) !important;
+        max-height: var(--height) !important;
+        border-color: $input-search-border-color;
+        line-height: var(--height);
+        border-radius: var(--border-radius);
+        color: $primary-text-color;
+      }
+
+      .searchIcon {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        text-align: center;
+        font-size: 24px;
+        color: $secondary-text-color;
+        opacity: .6;
+        line-height: 1;
+        z-index: 1;
+
+        width: 24px;
+        height: 24px;
+        left: .8125rem;
+        pointer-events: none;
+      }
+    }
+  }
+
+  .sidebarContent {
+
+  }
 }
 
-.main {
+.chatContainer {
 }
