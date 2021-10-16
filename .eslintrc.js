@@ -16,5 +16,6 @@ module.exports = {
   },
   rules: {
     // 自定义你的规则
+    "no-promise-executor-return": 0
   },
 }
