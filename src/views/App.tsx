@@ -1,26 +1,58 @@
 import { MenuOutlined, SearchOutlined } from '@ant-design/icons'
-import { Button, Input } from 'antd'
+import { configureStore, createAction, createReducer } from '@reduxjs/toolkit'
+import { Avatar, Button, Input } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { bridgeAdapter } from '../adapters/bridgeAdapter'
 import ChatRoom from '../components/ChatRoom'
 import { Bridge, createBridge } from '../providers/bridgeProvider'
-import { account } from '../providers/eventProvider'
+import { account, ui } from '../providers/eventProvider'
 import styles from '../styles/App.module.scss'
 import FriendSearchable from '../types/FriendSearchable'
 import GroupSearchable from '../types/GroupSearchable'
+import Room from '../types/Room'
+import { getRoomAvatarUrl } from '../utils/apis'
+
+const updateFriends = createAction<FriendSearchable[]>('friends/update')
+const updateGroups = createAction<GroupSearchable[]>('groups/update')
+const updateRooms = createAction<Room[]>('rooms/update')
+
+const initialState = {
+  friends: [{}],
+  groups: [{}],
+  rooms: [{
+    roomId: 0,
+    roomName: 'NULL'
+  }]
+}
+
+const reducer = createReducer(initialState, (builder) => {
+  builder.addCase(updateFriends, (state, action) => {
+    state.friends = action.payload
+  }).addCase(updateGroups, (state, action) => {
+    state.groups = action.payload
+  }).addCase(updateRooms, (state, action) => {
+    state.rooms = action.payload
+  })
+})
+
+const store = configureStore({
+  reducer: reducer
+})
 
 export default function App() {
   const [bot, setBot] = useState<Bridge>()
-  const [friends, setFriends] = useState<FriendSearchable[]>()
-  const [groups, setGroups] = useState<GroupSearchable[]>()
 
   useEffect(() => {
     createBridge()
 
     account.on('updateBot', async (bot: Bridge) => {
       setBot(bot)
-      setFriends(await bridgeAdapter.getFriends())
-      setGroups(await bridgeAdapter.getGroups())
+      store.dispatch(updateFriends(await bridgeAdapter.getFriends()))
+      store.dispatch(updateGroups(await bridgeAdapter.getGroups()))
+    })
+
+    ui.on('updateRooms', (rooms: Room[]) => {
+      store.dispatch(updateRooms(rooms))
     })
   }, [])
 
@@ -46,9 +78,9 @@ export default function App() {
             <div className={styles.foldersTabs}>abc</div>
             <div className={styles.tabsContainer}>
               {
-                friends?.map(i => (
-                  <div key={i.user_id}>
-                    {i.nickname} {i.user_id}
+                store.getState().rooms.map(i => (
+                  <div key={i.roomId}>
+                    <Avatar src={getRoomAvatarUrl(i.roomId)} />{i.roomName}
                   </div>
                 ))
               }

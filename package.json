@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
+    "@reduxjs/toolkit": "^1.6.2",
     "antd": "^4.16.13",
     "axios": "^0.21.4",
     "md5": "^2.3.0",
@@ -26,7 +27,6 @@
     "react-redux": "^7.2.5",
     "react-router": "^5.2.1",
     "react-router-dom": "^5.3.0",
-    "redux-toolkit": "^1.1.2",
     "sass": "^1.42.1",
     "socket.io-client": "^4.2.0"
   },

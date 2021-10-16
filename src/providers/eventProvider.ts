@@ -43,5 +43,5 @@ ui.on('showError', (args: ArgsProps) => {
 
 // UI
 ui.on('updateRooms', (rooms: Room[]) => {
-  console.log(rooms)
+  // console.log(rooms)
 })

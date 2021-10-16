@@ -9,3 +9,9 @@ export function getImageUrlByMd5(md5: string) {
 export function getUserAvatarUrl(uin: number) {
   return `https://q1.qlogo.cn/g?b=qq&nk=${uin}&s=640`
 }
+
+export function getRoomAvatarUrl(roomId: number) {
+  return (roomId < 0)
+    ? `https://p.qlogo.cn/gh/${-roomId}/${-roomId}/0`
+    : `https://q1.qlogo.cn/g?b=qq&nk=${roomId}&s=640`
+}

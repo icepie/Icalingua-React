@@ -490,6 +490,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@reduxjs/toolkit@npm:^1.6.2":
+  version: 1.6.2
+  resolution: "@reduxjs/toolkit@npm:1.6.2"
+  dependencies:
+    immer: ^9.0.6
+    redux: ^4.1.0
+    redux-thunk: ^2.3.0
+    reselect: ^4.0.0
+  peerDependencies:
+    react: ^16.14.0 || ^17.0.0
+    react-redux: ^7.2.1
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-redux:
+      optional: true
+  checksum: 895e30518dd1552c115c8a06091856f1f60394a971d214eba5c6d7fc2053c5bc2730bc172ba88aead25d240e99a25c94c3621159823bbc0d0109dc9365db456d
+  languageName: node
+  linkType: hard
+
 "@rollup/plugin-node-resolve@npm:^13.0.4":
   version: 13.0.5
   resolution: "@rollup/plugin-node-resolve@npm:13.0.5"
@@ -1414,7 +1434,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:2, debug@npm:2.6.9, debug@npm:^2.2.0":
+"debug@npm:2, debug@npm:2.6.9":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
   dependencies:
@@ -2148,15 +2168,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flux-standard-action@npm:^0.6.0":
-  version: 0.6.1
-  resolution: "flux-standard-action@npm:0.6.1"
-  dependencies:
-    lodash.isplainobject: ^3.2.0
-  checksum: 0da4a47182438e6fd7d56396c6a8cc53af6aa33816ea33e9473ca2c1088e61973578c4bf5e56604cf4f79c4d5f9e720c1ce3973376c6a14aa9a15c60d24aab96
-  languageName: node
-  linkType: hard
-
 "follow-redirects@npm:^1.14.0":
   version: 1.14.4
   resolution: "follow-redirects@npm:1.14.4"
@@ -2455,6 +2466,7 @@ fsevents@~2.3.2:
   resolution: "icalingua-react@workspace:."
   dependencies:
     "@ant-design/icons": ^4.7.0
+    "@reduxjs/toolkit": ^1.6.2
     "@types/md5": ^2.3.1
     "@types/react": ^17.0.0
     "@types/react-dom": ^17.0.0
@@ -2479,7 +2491,6 @@ fsevents@~2.3.2:
     react-redux: ^7.2.5
     react-router: ^5.2.1
     react-router-dom: ^5.3.0
-    redux-toolkit: ^1.1.2
     sass: ^1.42.1
     socket.io-client: ^4.2.0
     typescript: ^4.4.3
@@ -2517,6 +2528,13 @@ fsevents@~2.3.2:
   version: 5.1.8
   resolution: "ignore@npm:5.1.8"
   checksum: 967abadb61e2cb0e5c5e8c4e1686ab926f91bc1a4680d994b91947d3c65d04c3ae126dcdf67f08e0feeb8ff8407d453e641aeeddcc47a3a3cca359f283cf6121
+  languageName: node
+  linkType: hard
+
+"immer@npm:^9.0.6":
+  version: 9.0.6
+  resolution: "immer@npm:9.0.6"
+  checksum: 75da22f3b32f3f14604eb389b4f50e84a14f2e42f306f0cbe4d2969aed54ec7fda9a7e9ca42ebae2ba73ec9bb6ec1001fafbac535accaf03860054ab0f7e8388
   languageName: node
   linkType: hard
 
@@ -2576,15 +2594,6 @@ fsevents@~2.3.2:
     has: ^1.0.3
     side-channel: ^1.0.4
   checksum: 1944f92e981e47aebc98a88ff0db579fd90543d937806104d0b96557b10c1f170c51fb777b97740a8b6ddeec585fca8c39ae99fd08a8e058dfc8ab70937238bf
-  languageName: node
-  linkType: hard
-
-"invariant@npm:^2.1.1":
-  version: 2.2.4
-  resolution: "invariant@npm:2.2.4"
-  dependencies:
-    loose-envify: ^1.0.0
-  checksum: cc3182d793aad82a8d1f0af697b462939cb46066ec48bbf1707c150ad5fad6406137e91a262022c269702e01621f35ef60269f6c0d7fd178487959809acdfb14
   languageName: node
   linkType: hard
 
@@ -2904,52 +2913,10 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"lodash._basefor@npm:^3.0.0":
-  version: 3.0.3
-  resolution: "lodash._basefor@npm:3.0.3"
-  checksum: 8028af9901a33c336eeb18945bfe304f9e2abc1a741f688a5e26e3fa1a1c975688f7a40ec90d8dc3eda3c04160ede0aa5a89c2beb04ac29daf914b5aeb8b6b5a
-  languageName: node
-  linkType: hard
-
 "lodash.clonedeep@npm:^4.5.0":
   version: 4.5.0
   resolution: "lodash.clonedeep@npm:4.5.0"
   checksum: 92c46f094b064e876a23c97f57f81fbffd5d760bf2d8a1c61d85db6d1e488c66b0384c943abee4f6af7debf5ad4e4282e74ff83177c9e63d8ff081a4837c3489
-  languageName: node
-  linkType: hard
-
-"lodash.isarguments@npm:^3.0.0":
-  version: 3.1.0
-  resolution: "lodash.isarguments@npm:3.1.0"
-  checksum: ae1526f3eb5c61c77944b101b1f655f846ecbedcb9e6b073526eba6890dc0f13f09f72e11ffbf6540b602caee319af9ac363d6cdd6be41f4ee453436f04f13b5
-  languageName: node
-  linkType: hard
-
-"lodash.isarray@npm:^3.0.0":
-  version: 3.0.4
-  resolution: "lodash.isarray@npm:3.0.4"
-  checksum: 3b298fb76ff16981353f7d0695d8680be9451b74d2e76714ddbd903a90fbaa8e1d84979d0ae99325f5a9033776771154b19e05027ab23de83202251c8abe81b5
-  languageName: node
-  linkType: hard
-
-"lodash.isplainobject@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "lodash.isplainobject@npm:3.2.0"
-  dependencies:
-    lodash._basefor: ^3.0.0
-    lodash.isarguments: ^3.0.0
-    lodash.keysin: ^3.0.0
-  checksum: c49ee7642dea4427aeae37ad987fb43b574e15322c0cd5c8e9d6097099394dd68783948da646291e25471b7faa917ce8e18435403a6da89b1652520ea735d9c5
-  languageName: node
-  linkType: hard
-
-"lodash.keysin@npm:^3.0.0":
-  version: 3.0.8
-  resolution: "lodash.keysin@npm:3.0.8"
-  dependencies:
-    lodash.isarguments: ^3.0.0
-    lodash.isarray: ^3.0.0
-  checksum: 7d748df105266a474b6b3b17bef339f16c8625fb3091e3c6cad4a02ad943617c3fd5cb9036fed0dbd4a38e6d02e1f6d4a8cc5399f075d411f2a8f21b2eb8a8e4
   languageName: node
   linkType: hard
 
@@ -2964,13 +2931,6 @@ fsevents@~2.3.2:
   version: 4.4.2
   resolution: "lodash.truncate@npm:4.4.2"
   checksum: b463d8a382cfb5f0e71c504dcb6f807a7bd379ff1ea216669aa42c52fc28c54e404bfbd96791aa09e6df0de2c1d7b8f1b7f4b1a61f324d38fe98bc535aeee4f5
-  languageName: node
-  linkType: hard
-
-"lodash@npm:^3.10.1":
-  version: 3.10.1
-  resolution: "lodash@npm:3.10.1"
-  checksum: 53065d3712a2fd90b55690c5af19f9625a5bbb2b7876ff76d782ee1dc22618fd4dff191d44a8e165a17b5b81a851c3e884d3b5b25e314422fbe24bb299542685
   languageName: node
   linkType: hard
 
@@ -4291,19 +4251,14 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"redux-toolkit@npm:^1.1.2":
-  version: 1.1.2
-  resolution: "redux-toolkit@npm:1.1.2"
-  dependencies:
-    debug: ^2.2.0
-    flux-standard-action: ^0.6.0
-    invariant: ^2.1.1
-    lodash: ^3.10.1
-  checksum: 28d14a820af895db3af8b4da8c54350780354195e9266e236d150fc2e338957ffba4fb02bd50bfb4e0d4ac463137fe88ddd6238c9fd1a7daf6c81ac6548f99d2
+"redux-thunk@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "redux-thunk@npm:2.3.0"
+  checksum: d13f442ffc91249b534bf14884c33feff582894be2562169637dc9d4d70aec6423bfe6d66f88c46ac027ac1c0cd07d6c2dd4a61cf7695b8e43491de679df9bcf
   languageName: node
   linkType: hard
 
-"redux@npm:^4.0.0":
+"redux@npm:^4.0.0, redux@npm:^4.1.0":
   version: 4.1.1
   resolution: "redux@npm:4.1.1"
   dependencies:
@@ -4340,6 +4295,13 @@ fsevents@~2.3.2:
   version: 2.0.2
   resolution: "require-from-string@npm:2.0.2"
   checksum: a03ef6895445f33a4015300c426699bc66b2b044ba7b670aa238610381b56d3f07c686251740d575e22f4c87531ba662d06937508f0f3c0f1ddc04db3130560b
+  languageName: node
+  linkType: hard
+
+"reselect@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "reselect@npm:4.0.0"
+  checksum: ac7dfc9ef2cdb42b6fc87a856f3ce904c2e4363a2bc1e6fb7eea5f78902a6f506e4388e6509752984877c6dbfe501100c076671d334799eb5a1bfe9936cb2c12
   languageName: node
   linkType: hard
 
