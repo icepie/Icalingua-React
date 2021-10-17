@@ -81,7 +81,7 @@ export function createBridge() {
   bridgeSocket.once('authSucceed', async () => {
     bot = new Bridge(bridgeVersion)
 
-    account.emit('loginSuccess', bot)
+    setTimeout(() => account.emit('loginSuccess', bot), 500)
     ui.emit('showSuccess', { message: '登录成功', description: `身份验证成功，服务器版本${bridgeVersion.version}` })
   })
 
