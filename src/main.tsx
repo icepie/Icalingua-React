@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { reducer } from './data/reducer'
 import { initLocalStorage } from './providers/configProvider'
-import Router from './routers/routers'
+import Router from './routers'
 import './styles/global.scss'
 
 
