@@ -1,7 +1,7 @@
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
-import { getConfig } from '../providers/configProvider'
-import LoginView from '../views/LoginView'
-import App from '../views/App'
+import { getConfig } from './providers/configProvider'
+import LoginView from './views/LoginView'
+import App from './views/App'
 
 export default function Router() {
   let requireLogin = getConfig().server === '' || getConfig().privateKey === ''
