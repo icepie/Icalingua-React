@@ -1,0 +1,19 @@
+@import '../styles/mixin';
+
+.rooms {
+  @include flexbox;
+  flex-direction: column;
+
+  .room {
+    min-height: 40px;
+    overflow: hidden;
+
+    .roomAvatar {
+
+    }
+
+    .roomName {
+      display: inline-block;
+    }
+  }
+}

@@ -1,32 +1,27 @@
-@import 'colors';
-
-// TODO: 分割整理
-
-.layout {
-  height: 100%;
-}
+@import "src/styles/colors";
+@import "src/styles/mixin";
 
 .chatSidebar {
-  display: flex;
+  @include flexbox;
   justify-content: flex-start;
   flex-direction: column;
   min-width: 18rem;
   max-width: calc(1680px / 4);
   height: 100%;
+  position: fixed;
+  @include scroll-y;
 
   background: $surface-color;
 
-  border-right: 1px solid #303133;
-
   .sidebarHead {
-    display: flex;
+    @include flexbox;
     padding: 0 1rem;
     align-items: center;
     background: $surface-color;
     min-height: 3.5rem;
 
     .menuButton {
-      display: flex;
+      @include flexbox;
       align-items: center;
       justify-content: center;
       color: $secondary-text-color;
@@ -47,23 +42,23 @@
     .searchBox {
       position: relative;
       width: 100%;
-      margin-left: .4375rem;
-      margin-right: .4375rem;
+      margin-left: .5rem;
+      margin-right: .5rem;
       overflow: hidden;
-      --border-radius: 22px;
-      border-radius: var(--border-radius);
+      $border-radius: 22px;
+      border-radius: $border-radius;
 
       .searchInput {
-        --border-width: 1px;
-        --height: 42px;
+        $border-width: 1px;
+        $height: 42px;
         background-color: $input-search-background-color;
-        padding: 0 calc(var(--height) + 3px - var(--border-width));
-        height: var(--height);
-        min-height: var(--height) !important;
-        max-height: var(--height) !important;
+        padding: 0 $height + 3px - $border-width;
+        height: $height;
+        min-height: $height;
+        max-height: $height;
         border-color: $input-search-border-color;
-        line-height: var(--height);
-        border-radius: var(--border-radius);
+        line-height: $height;
+        border-radius: $border-radius;
         font-size: 16px;
 
         &::-webkit-input-placeholder {
@@ -93,9 +88,9 @@
 
   .sidebarContent {
     .foldersTabs {
-      --menu-size: 3rem;
-      --scrollable-size: var(--menu-size);
-      height: var(--scrollable-size);
+      $menu-size: 3rem;
+      $scrollable-size: $menu-size;
+      height: $scrollable-size;
       z-index: 1;
       background-color: $surface-color;
       position: relative;
@@ -103,10 +98,7 @@
     }
 
     .tabsContainer {
-      display: grid;
+      @include flexbox;
     }
   }
-}
-
-.chatContainer {
 }

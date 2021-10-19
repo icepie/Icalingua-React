@@ -1,0 +1,11 @@
+@mixin scroll-y {
+  overflow-y: auto;
+}
+
+@mixin scroll-x {
+  overflow-x: auto;
+}
+
+@mixin flexbox {
+  display: flex;
+}

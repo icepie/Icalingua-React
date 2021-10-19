@@ -4,12 +4,14 @@ import { connect } from 'react-redux'
 import { States } from '../data/reducer'
 import Room from '../types/Room'
 import { getRoomAvatarUrl } from '../utils/apis'
+import styles from './SidebarRooms.module.scss'
 
 const Rooms = ({ rooms }: { rooms: Room[] }) => (
-  <div>
+  <div className={styles.rooms}>
     {rooms.map((i: Room) => (
-      <div key={i.roomId}>
-        <Avatar src={getRoomAvatarUrl(i.roomId)} />{i.roomName}
+      <div className={styles.room} key={i.roomId}>
+        <Avatar className={styles.roomAvatar} src={getRoomAvatarUrl(i.roomId)} />
+        <span className={styles.roomName}>{i.roomName}</span>
       </div>
     ))}
   </div>
