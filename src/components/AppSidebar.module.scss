@@ -95,6 +95,10 @@
       background-color: $surface-color;
       position: relative;
       top: unset;
+
+      div {
+        display: inline-block;
+      }
     }
 
     .tabsContainer {

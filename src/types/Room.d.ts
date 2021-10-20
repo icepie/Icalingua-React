@@ -6,17 +6,7 @@ export default interface Room {
   avatar: string;
   index: number;
   unreadCount: number;
-  priority: 1 | 2 | 3 | 4 | 5;
-  utime: number;
-  users:
-    | [{ _id: 1; username: '1' }, { _id: 2; username: '2' }]
-    | [
-    { _id: 1; username: '1' },
-    { _id: 2; username: '2' },
-    { _id: 3; username: '3' }
-  ];
+  utime: number; // UpdateTime
   at?: boolean | 'all';
   lastMessage: LastMessage;
-  autoDownload?: boolean;
-  downloadPath?: string;
 }

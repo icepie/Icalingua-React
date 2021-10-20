@@ -2,7 +2,7 @@ import { createReducer } from '@reduxjs/toolkit'
 import FriendSearchable from '../types/FriendSearchable'
 import GroupSearchable from '../types/GroupSearchable'
 import Room from '../types/Room'
-import { updateFriends, updateGroups, updateRooms } from './actions'
+import { updateFriends, updateGroups, updateRooms } from '../actions/account'
 
 export interface States {
   friends: FriendSearchable[]

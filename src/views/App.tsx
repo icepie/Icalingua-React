@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useStore } from 'react-redux'
-import { bridgeAdapter } from '../adapters/bridgeAdapter'
+import { getFriends, getGroups } from '../adapters/account'
 import AppContainer from '../components/AppContainer'
 import AppSidebar from '../components/AppSidebar'
-import { updateFriends, updateGroups, updateRooms } from '../data/actions'
+import { updateFriends, updateGroups, updateRooms } from '../actions/account'
 import { Bridge, createBridge } from '../providers/bridgeProvider'
 import { account, ui } from '../providers/eventProvider'
 import Room from '../types/Room'
@@ -21,8 +21,8 @@ export default function App() {
 
     account.on('updateBot', async (bot: Bridge) => {
       setBot(bot)
-      dispatch(updateFriends(await bridgeAdapter.getFriends()))
-      dispatch(updateGroups(await bridgeAdapter.getGroups()))
+      dispatch(updateFriends(await getFriends()))
+      dispatch(updateGroups(await getGroups()))
     })
 
     ui.on('updateRooms', (rooms: Room[]) => {

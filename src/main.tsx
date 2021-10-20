@@ -12,7 +12,6 @@ import { initLocalStorage } from './providers/configProvider'
 import Router from './routers'
 import './styles/global.scss'
 
-
 moment('zh-cn')
 
 // 初始化数据
