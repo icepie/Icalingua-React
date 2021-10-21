@@ -1,7 +1,13 @@
+@import "colors";
+
 .box {
   margin: 20px;
 }
 
 .layout {
   height: 100%;
+}
+
+button {
+  background: $background-color;
 }
