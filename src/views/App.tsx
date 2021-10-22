@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useStore } from 'react-redux'
+import { updateFriends, updateGroups, updateRooms } from '../actions/account'
 import { getFriends, getGroups } from '../adapters/account'
 import AppContainer from '../components/AppContainer'
 import AppSidebar from '../components/AppSidebar'
-import { updateFriends, updateGroups, updateRooms } from '../actions/account'
 import { Bridge, createBridge } from '../providers/bridgeProvider'
 import { account, ui } from '../providers/eventProvider'
-import Room from '../types/Room'
+import { Room } from '../types/RuntimeTypes'
 
 export default function App() {
   const [bot, setBot] = useState<Bridge>()

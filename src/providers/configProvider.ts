@@ -1,4 +1,4 @@
-import Config from '../types/Config'
+import { Config } from '../types/RuntimeTypes'
 
 export const initLocalStorage = () => {
   let config: Config = {

@@ -1,7 +1,7 @@
 import { notification } from 'antd'
 import { ArgsProps } from 'antd/lib/notification'
 import Emitter from 'component-emitter'
-import Room from '../types/Room'
+import { Room } from '../types/RuntimeTypes'
 import { logger, newLogProps } from '../utils/logger'
 import { Bridge } from './bridgeProvider'
 

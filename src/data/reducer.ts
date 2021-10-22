@@ -1,27 +1,33 @@
 import { createReducer } from '@reduxjs/toolkit'
-import FriendSearchable from '../types/FriendSearchable'
-import GroupSearchable from '../types/GroupSearchable'
-import Room from '../types/Room'
 import { updateFriends, updateGroups, updateRooms } from '../actions/account'
+import { joinRoom, updateRoom } from '../actions/ui'
+import { handleUpdateFriends, handleUpdateGroups, handleUpdateRooms } from '../reducers/account'
+import { handleJoinRoom, handleUpdateRoom } from '../reducers/ui'
+import { FriendSearchable, GroupSearchable, Room } from '../types/RuntimeTypes'
 
 export interface States {
-  friends: FriendSearchable[]
-  groups: GroupSearchable[]
-  rooms: Room[]
+  runtime: {
+    friends: FriendSearchable[]
+    groups: GroupSearchable[]
+    rooms: Room[]
+  }
+  
+  room: number
 }
 
-const initialState:States = {
-  friends: [],
-  groups: [],
-  rooms: []
+const initialState: States = {
+  runtime: {
+    friends: [],
+    groups: [],
+    rooms: [],
+  },
+  room: 0,
 }
 
 export const reducer = createReducer(initialState, (builder) => {
-  builder.addCase(updateFriends, (state, action) => {
-    state.friends = action.payload
-  }).addCase(updateGroups, (state, action) => {
-    state.groups = action.payload
-  }).addCase(updateRooms, (state, action) => {
-    state.rooms = action.payload
-  })
+  builder.addCase(updateFriends, handleUpdateFriends).
+          addCase(updateGroups, handleUpdateGroups).
+          addCase(updateRooms, handleUpdateRooms).
+          addCase(joinRoom, handleJoinRoom).
+          addCase(updateRoom, handleUpdateRoom)
 })
