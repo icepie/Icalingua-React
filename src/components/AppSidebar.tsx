@@ -2,7 +2,7 @@ import { MenuOutlined, SearchOutlined } from '@ant-design/icons'
 import { Input } from 'antd'
 import React, { useState } from 'react'
 import styles from './AppSidebar.module.scss'
-import { SidebarRooms } from './SidebarRooms'
+import SidebarRooms from './SidebarRooms'
 
 export enum FolderType {All, Friends, Group}
 

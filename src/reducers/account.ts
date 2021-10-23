@@ -1,6 +1,12 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import { FriendSearchable, GroupSearchable, Room } from '../types/RuntimeTypes'
+import { Bridge } from '../providers/bridgeProvider'
+import { Room } from '../types/RoomTypes'
+import { FriendSearchable, GroupSearchable } from '../types/RuntimeTypes'
 import States from '../types/States'
+
+export function handleUpdateBot(state: States, action: PayloadAction<Bridge>) {
+  state.runtime.bot = action.payload
+}
 
 export function handleUpdateFriends(state: States, action: PayloadAction<FriendSearchable[]>) {
   state.runtime.friends = action.payload

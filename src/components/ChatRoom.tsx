@@ -1,28 +1,40 @@
-import { connect, useStore } from 'react-redux'
-import { Message } from '../types/RuntimeTypes'
+import { useEffect, useState } from 'react'
+import { connect, useDispatch } from 'react-redux'
+import { putMessages } from '../actions/room'
+import { getMessages } from '../adapters/room'
+import { Message, Room } from '../types/RoomTypes'
 import States from '../types/States'
 
-const AMessage = (message: Message) => (
+const AMessage = ({ message }: { message: Message }) => (
   <div>
     {message.content}
   </div>
 )
 
-const Room = () => {
-  const store = useStore()
-  let state: States = store.getState()
+const ChatRoom = ({ room }: { room?: Room }) => {
+  const dispatch = useDispatch()
+  const [messages, setMessages] = useState<Message[]>()
+  
+  useEffect(() => {
+    const fetchMessages = async () => {
+      setMessages(await getMessages(room?.roomId as number))
+      dispatch(putMessages(messages as Message[]))
+    }
+    
+    fetchMessages()
+  }, [])
   
   return (
     <div>
-      qwq
-      {state.currentRoom.room?.roomId}
+      {messages?.map((i) => {
+        return <AMessage key={i._id} message={i} />
+      })}
     </div>
   )
 }
 
 const mapRoomStateToProps = (state: States) => ({
-  room: state.currentRoom,
+  room: state.currentRoom.room,
 })
 
-export const ChatRoom = connect(mapRoomStateToProps)(Room)
-
+export default connect(mapRoomStateToProps)(ChatRoom)

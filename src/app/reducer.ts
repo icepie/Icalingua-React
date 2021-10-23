@@ -1,5 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit'
 import { handleUpdateFriends, handleUpdateGroups, handleUpdateRooms } from '../reducers/account'
+import { handleAddMessage, handlePutMessages } from '../reducers/room'
 import { handleJoinRoom, handleUpdateRoom } from '../reducers/ui'
 import States from '../types/States'
 
@@ -11,4 +12,6 @@ export const reducer = createReducer(initialState, {
   'rooms/update': handleUpdateRooms,
   'room/join': handleJoinRoom,
   'room/update': handleUpdateRoom,
+  'room/putMessages': handlePutMessages,
+  'room/addMessage': handleAddMessage,
 })

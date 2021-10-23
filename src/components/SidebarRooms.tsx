@@ -3,8 +3,8 @@ import React from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { joinRoom } from '../actions/ui'
 import { getRoom } from '../adapters/account'
-import { States } from '../app/reducer'
-import { Room } from '../types/RuntimeTypes'
+import { Room } from '../types/RoomTypes'
+import States from '../types/States'
 import { getRoomAvatarUrl } from '../utils/apis'
 import { FolderType } from './AppSidebar'
 import styles from './SidebarRooms.module.scss'
@@ -45,7 +45,7 @@ const SidebarAllRooms = connect(mapRoomsStateToProps)(Rooms)
 const SidebarFriends = connect(mapFriendsStateToProps)(Rooms)
 const SidebarGroups = connect(mapGroupsStateToProps)(Rooms)
 
-export const SidebarRooms = ({ folder }: { folder: FolderType }) => {
+export default ({ folder }: { folder: FolderType }) => {
   switch (folder) {
     case FolderType.All:
       return <SidebarAllRooms />
