@@ -4,7 +4,6 @@ $sidebar-min-width: 18rem;
 $sidebar-max-width: calc(1680px / 4);
 
 .chatSidebar {
-  position: fixed;
   display: flex;
   overflow-y: auto;
   flex-direction: column;

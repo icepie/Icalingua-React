@@ -3,14 +3,14 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router'
 import { getConfig, saveConfig } from '../providers/configProvider'
 
-export default function LoginView() {
+export default function Login() {
   const [form] = Form.useForm()
   const history = useHistory()
-
+  
   useEffect(() => {
     form.setFieldsValue(getConfig())
   }, [])
-
+  
   const login = async () => {
     saveConfig(form.getFieldsValue())
     history.push('/')

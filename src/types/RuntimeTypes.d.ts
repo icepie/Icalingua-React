@@ -1,4 +1,4 @@
-import { FriendInfo, GroupInfo, MessageElem } from 'oicq'
+import { FriendInfo, GroupInfo } from 'oicq'
 
 export interface Config {
   server: string
@@ -43,5 +43,30 @@ export interface Room {
   lastMessage: LastMessage
 }
 
-export type Message = MessageElem
+export interface MessageFile {
+  type: string;
+  url: string;
+  size?: number;
+  name?: string;
+  fid?: string;
+}
 
+export interface Message {
+  _id: string | number
+  senderId?: number
+  username: string
+  content: string
+  code?: string
+  timestamp?: string
+  date?: string
+  role?: string
+  file?: MessageFile
+  time?: number
+  replyMessage?: Message
+  at?: boolean | 'all'
+  deleted?: boolean
+  system?: boolean
+  reveal?: boolean
+  flash?: boolean
+  title?: string
+}

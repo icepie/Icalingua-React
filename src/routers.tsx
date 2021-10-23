@@ -1,7 +1,7 @@
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import { getConfig } from './providers/configProvider'
-import LoginView from './views/LoginView'
 import App from './views/App'
+import Login from './views/Login'
 
 export default function Router() {
   let requireLogin = getConfig().server === '' || getConfig().privateKey === ''
@@ -13,7 +13,7 @@ export default function Router() {
           {requireLogin ? <Redirect to="/login" /> : <App />}
         </Route>
         <Route path="/login" exact={true}>
-          {requireLogin ? <LoginView /> : <App />}
+          {requireLogin ? <Login /> : <App />}
         </Route>
       </Switch>
     </BrowserRouter>

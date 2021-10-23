@@ -1,13 +1,28 @@
-import { useStore } from 'react-redux'
+import { connect, useStore } from 'react-redux'
+import { Message } from '../types/RuntimeTypes'
+import States from '../types/States'
 
-export default function ChatRoom() {
+const AMessage = (message: Message) => (
+  <div>
+    {message.content}
+  </div>
+)
+
+const Room = () => {
   const store = useStore()
-  let state = store.getState()
+  let state: States = store.getState()
   
   return (
     <div>
       qwq
-      {state.room?.roomId}
+      {state.currentRoom.room?.roomId}
     </div>
   )
 }
+
+const mapRoomStateToProps = (state: States) => ({
+  room: state.currentRoom,
+})
+
+export const ChatRoom = connect(mapRoomStateToProps)(Room)
+

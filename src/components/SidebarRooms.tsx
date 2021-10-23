@@ -3,13 +3,13 @@ import React from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { joinRoom } from '../actions/ui'
 import { getRoom } from '../adapters/account'
-import { States } from '../data/reducer'
+import { States } from '../app/reducer'
 import { Room } from '../types/RuntimeTypes'
 import { getRoomAvatarUrl } from '../utils/apis'
 import { FolderType } from './AppSidebar'
 import styles from './SidebarRooms.module.scss'
 
-const Rooms = ({ rooms }: { rooms: Room[] }) => {
+const Rooms = ({ rooms }: { rooms?: Room[] }) => {
   const dispatch = useDispatch()
   
   const enterRoom = async (roomId: number) => {
@@ -18,7 +18,7 @@ const Rooms = ({ rooms }: { rooms: Room[] }) => {
   
   return (
     <div className={styles.rooms}>
-      {rooms.map((i: Room) => (
+      {rooms?.map((i: Room) => (
         <div className={styles.room} key={i.roomId} onClick={() => enterRoom(i.roomId)}>
           <Avatar className={styles.roomAvatar} src={getRoomAvatarUrl(i.roomId)} />
           <span className={styles.roomName}>{i.roomName}</span>
@@ -34,11 +34,11 @@ const mapRoomsStateToProps = (state: States) => ({
 
 // TODO: 好友&群组列表？
 const mapFriendsStateToProps = (state: States) => ({
-  rooms: state.runtime.rooms.filter((room) => room.roomId > 0),
+  rooms: state.runtime.rooms?.filter((room) => room.roomId > 0),
 })
 
 const mapGroupsStateToProps = (state: States) => ({
-  rooms: state.runtime.rooms.filter((room) => room.roomId < 0),
+  rooms: state.runtime.rooms?.filter((room) => room.roomId < 0),
 })
 
 const SidebarAllRooms = connect(mapRoomsStateToProps)(Rooms)
