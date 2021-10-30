@@ -1,11 +1,9 @@
 import { Button, Col, Form, Input, Row } from 'antd'
 import React, { useEffect } from 'react'
-import { useHistory } from 'react-router'
 import { getConfig, saveConfig } from '../providers/configProvider'
 
 export default function Login() {
   const [form] = Form.useForm()
-  const history = useHistory()
   
   useEffect(() => {
     form.setFieldsValue(getConfig())
@@ -13,9 +11,9 @@ export default function Login() {
   
   const login = async () => {
     saveConfig(form.getFieldsValue())
-    history.push('/')
+    location.href = '/'
   }
-
+  
   return (
     <div>
       <Row className="box" justify="center">
@@ -27,7 +25,7 @@ export default function Login() {
             <Form.Item label="私钥" name="privateKey">
               <Input />
             </Form.Item>
-
+  
             <Button htmlType="submit" onClick={login}>
               登录
             </Button>

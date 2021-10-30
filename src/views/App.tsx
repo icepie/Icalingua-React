@@ -4,6 +4,7 @@ import { updateFriends, updateGroups, updateRooms } from '../actions/account'
 import { getFriends, getGroups } from '../adapters/account'
 import AppContainer from '../components/AppContainer'
 import AppSidebar from '../components/AppSidebar'
+import { Loading } from '../components/Loading'
 import { Bridge, createBridge } from '../providers/bridgeProvider'
 import { account, ui } from '../providers/eventProvider'
 import { Room } from '../types/RoomTypes'
@@ -31,10 +32,10 @@ export default function App() {
   
   return (
     <div className="layout">
-      {bot && <>
+      {bot ? <>
         <AppSidebar />
         <AppContainer />
-      </>}
+      </> : <Loading />}
     </div>
   )
 }

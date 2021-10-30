@@ -26,9 +26,9 @@ const ChatRoom = ({ room }: { room?: Room }) => {
   
   return (
     <div>
-      {messages?.map((i) => {
+      {messages ? messages.map((i) => {
         return <AMessage key={i._id} message={i} />
-      })}
+      }) : 'Icalingua'}
     </div>
   )
 }
