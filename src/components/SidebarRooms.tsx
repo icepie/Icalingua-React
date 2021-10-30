@@ -17,14 +17,17 @@ const Rooms = ({ rooms }: { rooms?: Room[] }) => {
   }
   
   return (
-    <div className={styles.rooms}>
+    <ul className={styles.rooms}>
       {rooms?.map((i: Room) => (
-        <div className={styles.room} key={i.roomId} onClick={() => enterRoom(i.roomId)}>
+        <li className={styles.room} key={i.roomId} onClick={() => enterRoom(i.roomId)}>
           <Avatar className={styles.roomAvatar} src={getRoomAvatarUrl(i.roomId)} />
-          <span className={styles.roomName}>{i.roomName}</span>
-        </div>
+          <div className={styles.caption}>
+            <p className={styles.roomName}>{i.roomName}</p>
+            <p className={styles.lastMessage}>{i.lastMessage.username}: {i.lastMessage.content}</p>
+          </div>
+        </li>
       ))}
-    </div>
+    </ul>
   )
 }
 

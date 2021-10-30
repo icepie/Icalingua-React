@@ -40,9 +40,8 @@ export default function AppSidebar() {
             </button>
           </div>
         </div>
-        <div className={styles.tabsContainer}>
-          <SidebarRooms folder={folder} />
-        </div>
+  
+        <SidebarRooms folder={folder} />
       </div>
     </div>
   )

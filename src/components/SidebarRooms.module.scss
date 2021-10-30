@@ -1,17 +1,46 @@
+@import "src/styles/colors";
+
 .rooms {
   display: flex;
   flex-direction: column;
+  list-style: none;
 
   .room {
-    min-height: 40px;
+    display: flex;
     overflow: hidden;
+    align-items: center;
+    min-height: 60px;
+    padding: 0 6px;
+    cursor: pointer;
+    transition: all .2s;
+    border-radius: 16px;
 
-    .roomAvatar {
-
+    &:hover {
+      background: $light-secondary-text-color;
     }
 
-    .roomName {
-      display: inline-block;
+    .roomAvatar {
+      width: 50px;
+      height: 50px;
+    }
+
+    .caption {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      margin-left: 1rem;
+
+      p {
+        margin: unset;
+      }
+
+      .roomName {
+        font-weight: bold;
+      }
+
+      .lastMessage {
+
+      }
     }
   }
 }
