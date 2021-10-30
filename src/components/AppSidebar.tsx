@@ -15,11 +15,6 @@ export default function AppSidebar() {
         <button className={styles.menuButton}>
           <MenuOutlined className={styles.menuIcon} />
         </button>
-        {
-          // <Popover title={bot.uin} content={bot.nickname}>
-          // <Avatar size="large" src={getUserAvatarUrl(bot.uin)} />
-          // </Popover>
-        }
         <div className={styles.searchBox}>
           <Input placeholder="Search" className={styles.searchInput} />
           <SearchOutlined className={styles.searchIcon} />

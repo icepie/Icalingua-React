@@ -1,40 +1,40 @@
 import { useEffect, useState } from 'react'
-import { connect, useDispatch } from 'react-redux'
+import { useDispatch, useStore } from 'react-redux'
 import { putMessages } from '../actions/room'
 import { getMessages } from '../adapters/room'
 import { Message, Room } from '../types/RoomTypes'
-import States from '../types/States'
+import { MessagesLoading } from './Loading'
 
 const AMessage = ({ message }: { message: Message }) => (
   <div>
-    {message.content}
+    <span>
+      {message.username} | {message.date} {message.timestamp}
+    </span>
+    <p>
+      {message.content}
+    </p>
   </div>
 )
 
-const ChatRoom = ({ room }: { room?: Room }) => {
+export default function ChatRoom({ room }: { room: Room }) {
   const dispatch = useDispatch()
-  const [messages, setMessages] = useState<Message[]>()
+  const store = useStore()
+  const [messages, setMessages] = useState<Message[] | undefined>()
   
   useEffect(() => {
     const fetchMessages = async () => {
-      setMessages(await getMessages(room?.roomId as number))
-      dispatch(putMessages(messages as Message[]))
+      dispatch(putMessages(await getMessages(room.roomId as number)))
+      setMessages(store.getState().currentRoom.messages)
     }
     
     fetchMessages()
-  }, [])
+  })
   
   return (
     <div>
       {messages ? messages.map((i) => {
         return <AMessage key={i._id} message={i} />
-      }) : 'Icalingua'}
+      }) : <MessagesLoading />}
     </div>
   )
 }
-
-const mapRoomStateToProps = (state: States) => ({
-  room: state.currentRoom.room,
-})
-
-export default connect(mapRoomStateToProps)(ChatRoom)

@@ -1,14 +1,14 @@
-import { Bridge } from '../providers/bridgeProvider'
 import { Message, Room } from './RoomTypes'
-import { FriendSearchable, GroupSearchable } from './RuntimeTypes'
+import { FriendSearchable, GroupSearchable, OnlineData } from './RuntimeTypes'
 
 export default interface States {
   runtime: {
-    bot?: Bridge
     friends?: FriendSearchable[]
     groups?: GroupSearchable[]
     rooms?: Room[]
   }
+  
+  onlineData?: OnlineData
   
   currentRoom: {
     room?: Room

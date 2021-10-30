@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { updateFriends, updateGroups, updateRooms } from '../actions/account'
+import React, { useEffect } from 'react'
+import { useDispatch, useStore } from 'react-redux'
+import { updateFriends, updateGroups, updateOnlineData, updateRooms } from '../actions/account'
 import { getFriends, getGroups } from '../adapters/account'
 import AppContainer from '../components/AppContainer'
 import AppSidebar from '../components/AppSidebar'
-import { Loading } from '../components/Loading'
+import { PageLoading } from '../components/Loading'
 import { Bridge, createBridge } from '../providers/bridgeProvider'
 import { account, ui } from '../providers/eventProvider'
 import { Room } from '../types/RoomTypes'
+import { OnlineData } from '../types/RuntimeTypes'
 
 export default function App() {
-  const [bot, setBot] = useState<Bridge>()
+  const store = useStore()
   const dispatch = useDispatch()
   
   const initSubscribe = () => {
     account.on('updateBot', async (bot: Bridge) => {
-      setBot(bot)
+      dispatch(updateOnlineData(bot.onlineData as OnlineData))
       dispatch(updateFriends(await getFriends()))
       dispatch(updateGroups(await getGroups()))
     })
@@ -32,10 +33,10 @@ export default function App() {
   
   return (
     <div className="layout">
-      {bot ? <>
+      {store.getState().onlineData?.online ? <>
         <AppSidebar />
         <AppContainer />
-      </> : <Loading />}
+      </> : <PageLoading />}
     </div>
   )
 }

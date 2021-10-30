@@ -1,6 +1,7 @@
 import { sign } from 'noble-ed25519'
 import { io, Socket } from 'socket.io-client'
-import { BridgeVersionInfo, OnlineData, Room } from '../types/RuntimeTypes'
+import { Room } from '../types/RoomTypes'
+import { BridgeVersionInfo, OnlineData } from '../types/RuntimeTypes'
 import { getConfig } from './configProvider'
 import { account, ui } from './eventProvider'
 

@@ -1,4 +1,4 @@
-import { FriendInfo, GroupInfo } from 'oicq'
+import { FriendInfo, GroupInfo, StrangerInfo } from 'oicq'
 
 export interface Config {
   server: string
@@ -10,7 +10,7 @@ export interface BridgeVersionInfo {
   protocolVersion: string
 }
 
-export interface OnlineData {
+export interface OnlineData extends StrangerInfo {
   online: boolean
   nick: string
   uin: number
