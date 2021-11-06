@@ -1,17 +1,33 @@
 import React from 'react'
-import { useStore } from 'react-redux'
+import { connect, useStore } from 'react-redux'
+import { RootState } from '../app/store'
+import { Room } from '../types/RoomTypes'
 import styles from './AppContainer.module.scss'
 import ChatRoom from './ChatRoom'
 
-export default function AppContainer() {
+export function Container({ room }: { room?: Room }) {
   const store = useStore()
   
   return (
     <div className={styles.chatContainer}>
-      {store.getState().currentRoom.room ? <ChatRoom room={store.getState().currentRoom.room} /> : <div>
-        <p>Icalingua-React 1.0</p>
-        <p>{store.getState().onlineData?.sysInfo}</p>
-      </div>}
+      {room ?
+        <ChatRoom room={room} /> :
+        <div>
+          <p>Icalingua-React 1.0</p>
+          
+          <p>
+            {store.getState().onlineData?.sysInfo.split('\n').map((i: string) =>
+              <span key={i} style={{ display: 'block' }}>{i}</span>,
+            )}
+          </p>
+        </div>
+      }
     </div>
   )
 }
+
+const mapRoomsStateToProps = (state: RootState) => ({
+  room: state.currentRoom.room,
+})
+
+export const AppContainer = connect(mapRoomsStateToProps)(Container)

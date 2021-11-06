@@ -30,6 +30,7 @@ $sidebar-max-width: calc(1680px / 4);
       height: 2.5rem;
       color: $secondary-text-color;
       border: none;
+      border-radius: 50%;
 
       &:hover {
         background-color: $light-secondary-text-color;

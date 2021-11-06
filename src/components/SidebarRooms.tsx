@@ -3,8 +3,8 @@ import React from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { joinRoom } from '../actions/ui'
 import { getRoom } from '../adapters/account'
+import { RootState } from '../app/store'
 import { Room } from '../types/RoomTypes'
-import States from '../types/States'
 import { getRoomAvatarUrl } from '../utils/apis'
 import { FolderType } from './AppSidebar'
 import styles from './SidebarRooms.module.scss'
@@ -31,16 +31,16 @@ const Rooms = ({ rooms }: { rooms?: Room[] }) => {
   )
 }
 
-const mapRoomsStateToProps = (state: States) => ({
+const mapRoomsStateToProps = (state: RootState) => ({
   rooms: state.runtime.rooms,
 })
 
 // TODO: 好友&群组列表？
-const mapFriendsStateToProps = (state: States) => ({
+const mapFriendsStateToProps = (state: RootState) => ({
   rooms: state.runtime.rooms?.filter((room) => room.roomId > 0),
 })
 
-const mapGroupsStateToProps = (state: States) => ({
+const mapGroupsStateToProps = (state: RootState) => ({
   rooms: state.runtime.rooms?.filter((room) => room.roomId < 0),
 })
 

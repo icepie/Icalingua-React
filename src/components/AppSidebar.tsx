@@ -1,6 +1,9 @@
-import { MenuOutlined, SearchOutlined } from '@ant-design/icons'
-import { Input } from 'antd'
+import { SearchOutlined } from '@ant-design/icons'
+import { Avatar, Input } from 'antd'
 import React, { useState } from 'react'
+import { useStore } from 'react-redux'
+import { RootState } from '../app/store'
+import { getUserAvatarUrl } from '../utils/apis'
 import styles from './AppSidebar.module.scss'
 import SidebarRooms from './SidebarRooms'
 
@@ -8,12 +11,16 @@ export enum FolderType {All, Friends, Group}
 
 export default function AppSidebar() {
   const [folder, setFolder] = useState<FolderType>(FolderType.All)
-
+  const state: RootState = useStore().getState()
+  
   return (
     <div className={styles.chatSidebar}>
       <div className={styles.sidebarHead}>
         <button className={styles.menuButton}>
-          <MenuOutlined className={styles.menuIcon} />
+          <Avatar src={getUserAvatarUrl(state.onlineData?.uin as number)} />
+          {
+            // MenuOutlined className={styles.menuIcon}
+          }
         </button>
         <div className={styles.searchBox}>
           <Input placeholder="Search" className={styles.searchInput} />
