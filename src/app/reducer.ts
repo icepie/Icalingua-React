@@ -4,6 +4,7 @@ import { handleAddMessage, handlePutMessages } from '../reducers/room'
 import { handleJoinRoom, handleUpdateRoom } from '../reducers/ui'
 import InitialStates from '../types/States'
 
+// TODO: 拆分OnlineData为user
 const initialState: InitialStates = { runtime: {}, currentRoom: {} }
 
 export const reducer = createReducer(initialState, {
