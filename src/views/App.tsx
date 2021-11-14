@@ -7,7 +7,7 @@ import { AppContainer } from '../components/AppContainer'
 import AppSidebar from '../components/AppSidebar'
 import { PageLoading } from '../components/Loading'
 import { Bridge, createBridge } from '../providers/bridgeProvider'
-import { account, ui } from '../providers/eventProvider'
+import { events } from '../providers/eventProvider'
 import { Room } from '../types/RoomTypes'
 import { OnlineData } from '../types/RuntimeTypes'
 
@@ -16,15 +16,15 @@ export default function App() {
   const [loading, setLoading] = useState(true)
   
   const initSubscribe = () => {
-    account.on('updateBot', async (bot: Bridge) => {
+    events.account.on('updateBot', async (bot: Bridge) => {
       dispatch(updateOnlineData(bot.onlineData as OnlineData))
       dispatch(updateFriends(await getFriends()))
       dispatch(updateGroups(await getGroups()))
-      
+    
       setLoading(false)
     })
-    
-    ui.on('updateRooms', (rooms: Room[]) => {
+  
+    events.rooms.on('updateRooms', (rooms: Room[]) => {
       dispatch(updateRooms(rooms))
     })
   }

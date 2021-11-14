@@ -4,10 +4,14 @@ import Emitter from 'component-emitter'
 import { logger, newLogProps } from '../utils/logger'
 import { Bridge } from './bridgeProvider'
 
-export let ui = new Emitter
-export let account = new Emitter
-// export let rooms = new Emitter
-export let messages = new Emitter
+const ui = new Emitter
+const account = new Emitter
+const rooms = new Emitter
+const messages = new Emitter
+
+export const events = {
+  ui, account, rooms, messages,
+}
 
 // Attach Events
 account.on('loginSuccess', (bot: Bridge) => {
