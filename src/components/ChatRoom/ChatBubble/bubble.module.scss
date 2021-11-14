@@ -7,11 +7,30 @@
   margin: 8px 0;
 
   .message {
+    min-width: 100px;
     margin-left: 8px;
     padding: 8px;
     border-radius: 8px;
     background: #ffffff;
 
     box-shadow: 0 0 1px $secondary-text-color;
+
+    span {
+      display: block;
+    }
+
+    .username {
+      margin-bottom: 2px;
+    }
+
+    .content {
+      margin-bottom: 0;
+    }
+
+    .timestamp {
+      font-size: 12px;
+      margin-bottom: 4px;
+      color: $secondary-text-color;
+    }
   }
 }

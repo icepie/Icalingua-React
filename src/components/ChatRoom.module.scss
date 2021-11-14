@@ -1,1 +1,52 @@
-@import "src/styles/colors";
+.chatRoom {
+  // display: flex;
+  // flex-direction: column;
+  // height: 100%;
+  // width: 100%;
+  // background-color: #fafafa;
+  // border-radius: 10px;
+  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  // overflow: hidden;
+}
+
+.chatTopBar {
+  line-height: 50px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  width: 75%;
+
+  // TODO: 样式有点问题
+  height: 50px;
+  padding: 0 10px;
+  background-color: #ffffff;
+
+  box-shadow: 0 1px 5px -1px rgba(0, 0, 0, 0.2);
+
+  .chatTopBarAvatar {
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: fill;
+    }
+  }
+
+  .chatTopBarTitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+}
+
+.chatBubbles {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+
+  background-color: #f8f9fa;
+}
+
+
+
