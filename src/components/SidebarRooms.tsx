@@ -1,4 +1,3 @@
-import { Avatar } from 'antd'
 import React from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { joinRoom } from '../actions/ui'
@@ -20,7 +19,9 @@ const Rooms = ({ rooms }: { rooms?: Room[] }) => {
     <ul className={styles.rooms}>
       {rooms?.map((i: Room) => (
         <li className={styles.room} key={i.roomId} onClick={() => enterRoom(i.roomId)}>
-          <Avatar className={styles.roomAvatar} src={getRoomAvatarUrl(i.roomId)} />
+          <span>
+            <img className={styles.roomAvatar} src={getRoomAvatarUrl(i.roomId)} alt="Room avatar" />
+          </span>
           <div className={styles.caption}>
             <p className={styles.roomName}>{i.roomName}</p>
             <p className={styles.lastMessage}>{i.lastMessage.username}: {i.lastMessage.content}</p>
