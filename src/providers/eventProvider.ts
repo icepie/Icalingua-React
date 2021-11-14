@@ -1,12 +1,13 @@
 import { notification } from 'antd'
 import { ArgsProps } from 'antd/lib/notification'
 import Emitter from 'component-emitter'
-import { Room } from '../types/RoomTypes'
 import { logger, newLogProps } from '../utils/logger'
 import { Bridge } from './bridgeProvider'
 
-export let account = new Emitter
 export let ui = new Emitter
+export let account = new Emitter
+// export let rooms = new Emitter
+export let messages = new Emitter
 
 // Attach Events
 account.on('loginSuccess', (bot: Bridge) => {
@@ -16,10 +17,6 @@ account.on('loginSuccess', (bot: Bridge) => {
 
 account.on('loginFailed', () => {
   location.href = '/login'
-})
-
-account.on('updateBot', (bot: Bridge) => {
-  // console.log(bot)
 })
 
 // Logger
@@ -41,7 +38,3 @@ ui.on('showError', (args: ArgsProps) => {
   logger.error({ ...args })
 })
 
-// UI
-ui.on('updateRooms', (rooms: Room[]) => {
-  // console.log(rooms)
-})
