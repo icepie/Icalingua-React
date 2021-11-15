@@ -24,7 +24,8 @@ export default function ChatRoom({ room }: { room: Room }) {
       const messages = await getMessages(room.roomId as number)
       dispatch(putMessages(messages))
       setMessages(messages)
-      scrollToButton()
+
+      scrollToButton() // 滚动到底部
     }
 
     message.loading({ content: '正在加载聊天记录...', key: 'chat_message' })
@@ -40,11 +41,13 @@ export default function ChatRoom({ room }: { room: Room }) {
         </span>
         <span className={styles.chatTopBarTitle}>{room.roomName}</span>
       </div>
+
       <div className={styles.chatBubbles}>
         {messages?.map((i: Message) => {
           return <ChatBubble key={i._id} message={i} />
         })}
       </div>
+
       <div ref={bottomElem} />
     </div>
   )
