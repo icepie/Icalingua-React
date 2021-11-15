@@ -1,5 +1,5 @@
 import { SearchOutlined } from '@ant-design/icons'
-import { Avatar, Input } from 'antd'
+import { Input } from 'antd'
 import React, { useState } from 'react'
 import { useStore } from 'react-redux'
 import { RootState } from '../app/store'
@@ -17,9 +17,11 @@ export default function AppSidebar() {
     <div className={styles.chatSidebar}>
       <div className={styles.sidebarHead}>
         <div className={styles.sidebarTitle}>
-          <button className={styles.menuButton}>
-            <Avatar src={getUserAvatarUrl(state.onlineData?.uin as number)} />
-          </button>
+          <div className={styles.menuButton}>
+            <span>
+              <img src={getUserAvatarUrl(state.onlineData?.uin as number)} alt="avatar" />
+            </span>
+          </div>
           <div className={styles.searchBox}>
             <Input placeholder="Search" className={styles.searchInput} />
             <SearchOutlined className={styles.searchIcon} />
