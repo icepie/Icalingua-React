@@ -15,11 +15,17 @@ $sidebar-max-width: calc(1680px / 4);
   background: $surface-color;
 
   .sidebarHead {
-    display: flex;
-    align-items: center;
-    min-height: 3.5rem;
     padding: 0 1rem;
-    background: $surface-color;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.7);
+
+    .sidebarTitle{
+      min-height: 3.5rem;
+      display: flex;
+      align-items: center;
+    }
 
     .menuButton {
       display: flex;
@@ -86,10 +92,6 @@ $sidebar-max-width: calc(1680px / 4);
         color: $secondary-text-color;
       }
     }
-  }
-
-  .sidebarContent {
-    padding: 0 1rem;
 
     .foldersTabs {
       $menu-size: 3rem;
@@ -98,7 +100,6 @@ $sidebar-max-width: calc(1680px / 4);
       z-index: 1;
       top: unset;
       height: $scrollable-size;
-      background-color: $surface-color;
 
       div {
         display: inline-flex;
@@ -129,9 +130,7 @@ $sidebar-max-width: calc(1680px / 4);
           height: 90%;
           margin: 0 8px;
           border: none;
-
-          background: #ffffff;
-
+          background-color: transparent;
 
           &:hover {
 
@@ -139,5 +138,10 @@ $sidebar-max-width: calc(1680px / 4);
         }
       }
     }
+  }
+
+  .sidebarContent {
+    padding: 0 1rem;
+
   }
 }
