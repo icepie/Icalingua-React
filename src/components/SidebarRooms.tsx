@@ -25,7 +25,8 @@ const Rooms = ({ rooms }: { rooms?: Room[] }) => {
           <div className={styles.caption}>
             <p className={styles.roomName}>{i.roomName}</p>
             <p className={styles.lastMessage}>
-              {i.lastMessage.username}: <span>{i.lastMessage.content}</span>
+              {i.roomId < 0 && `${i.lastMessage.username}: `}
+              <span>{i.lastMessage.content}</span>
             </p>
           </div>
         </li>
