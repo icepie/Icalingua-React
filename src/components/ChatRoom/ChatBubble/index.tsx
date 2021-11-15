@@ -6,12 +6,14 @@ import styles from './bubble.module.scss'
 
 export default function ChatBubble({ message }: { message: Message }) {
   // TODO: 进入房间每个人获取一个颜色
-  
+
   return (
     <div className={styles.bubble}>
-      <Avatar src={getUserAvatarUrl(message.senderId as number)} />
+      <Avatar src={getUserAvatarUrl(message.senderId as number)} style={{ minWidth: 'max-content' }} />
       <div className={styles.message}>
-        <span className={styles.username} style={{ color: randomUsernameColor() }}>{message.username}</span>
+        <span className={styles.username} style={{ color: randomUsernameColor() }}>
+          {message.username}
+        </span>
         <p className={styles.content}>{message.content}</p>
         <span className={styles.timestamp}>{message.timestamp}</span>
       </div>
