@@ -19,15 +19,13 @@ export default function AppSidebar() {
         <div className={styles.sidebarTitle}>
           <button className={styles.menuButton}>
             <Avatar src={getUserAvatarUrl(state.onlineData?.uin as number)} />
-            {
-              // MenuOutlined className={styles.menuIcon}
-            }
           </button>
           <div className={styles.searchBox}>
             <Input placeholder="Search" className={styles.searchInput} />
             <SearchOutlined className={styles.searchIcon} />
           </div>
         </div>
+
         <div className={styles.foldersTabs}>
           {/* TODO: 支持自定义文件夹 */}
           <div>
@@ -43,6 +41,7 @@ export default function AppSidebar() {
           </div>
         </div>
       </div>
+
       <div className={styles.sidebarContent}>
         <SidebarRooms folder={folder} />
       </div>
