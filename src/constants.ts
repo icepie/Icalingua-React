@@ -1,1 +1,1 @@
-export const GET_MESSAGES_OFFSET = 20
+export const GET_MESSAGES_OFFSET = 0
