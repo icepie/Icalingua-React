@@ -10,11 +10,11 @@ import styles from './SidebarRooms.module.scss'
 
 const Rooms = ({ rooms }: { rooms?: Room[] }) => {
   const dispatch = useDispatch()
-  
+
   const enterRoom = async (roomId: number) => {
     dispatch(joinRoom(await getRoom(roomId)))
   }
-  
+
   return (
     <ul className={styles.rooms}>
       {rooms?.map((i: Room) => (
@@ -24,7 +24,9 @@ const Rooms = ({ rooms }: { rooms?: Room[] }) => {
           </span>
           <div className={styles.caption}>
             <p className={styles.roomName}>{i.roomName}</p>
-            <p className={styles.lastMessage}>{i.lastMessage.username}: {i.lastMessage.content}</p>
+            <p className={styles.lastMessage}>
+              {i.lastMessage.username}: <span>{i.lastMessage.content}</span>
+            </p>
           </div>
         </li>
       ))}

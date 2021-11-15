@@ -31,13 +31,15 @@
       flex-direction: column;
       flex-wrap: nowrap;
       margin-left: 1rem;
+      width: 0;
+      flex-grow: 1;
 
       p {
         margin: unset;
 
-        //overflow: hidden;
-        //text-overflow: ellipsis;
-        //white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .roomName {
@@ -45,7 +47,11 @@
       }
 
       .lastMessage {
+        color: $secondary-text-color;
 
+        span {
+          color: $primary-text-color;
+        }
       }
     }
   }
