@@ -51,11 +51,11 @@ const SidebarGroups = connect(mapGroupsStateToProps)(Rooms)
 
 export default ({ folder }: { folder: FolderType }) => {
   switch (folder) {
-    case FolderType.All:
+    case 'All':
       return <SidebarAllRooms />
-    case FolderType.Friends:
+    case 'Friends':
       return <SidebarFriends />
-    case FolderType.Group:
+    case 'Group':
       return <SidebarGroups />
   }
 }

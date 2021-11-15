@@ -7,10 +7,10 @@ import { getUserAvatarUrl } from '../utils/apis'
 import styles from './AppSidebar.module.scss'
 import SidebarRooms from './SidebarRooms'
 
-export enum FolderType {All, Friends, Group}
+export type FolderType = 'All' | 'Friends' | 'Group'
 
 export default function AppSidebar() {
-  const [folder, setFolder] = useState<FolderType>(FolderType.All)
+  const [folder, setFolder] = useState<FolderType>('All')
   const state: RootState = useStore().getState()
   
   return (
@@ -31,18 +31,18 @@ export default function AppSidebar() {
         <div className={styles.foldersTabs}>
           {/* TODO: 支持自定义文件夹 */}
           <div>
-            <button className={folder === FolderType.All ? styles.folderActive : ''}
-                    onClick={() => setFolder(FolderType.All)}>全部会话
+            <button className={folder === 'All' ? styles.folderActive : ''}
+                    onClick={() => setFolder('All')}>全部会话
             </button>
-            <button className={folder === FolderType.Friends ? styles.folderActive : ''}
-                    onClick={() => setFolder(FolderType.Friends)}>好友
+            <button className={folder === 'Friends' ? styles.folderActive : ''}
+                    onClick={() => setFolder('Friends')}>好友
             </button>
-            <button className={folder === FolderType.Group ? styles.folderActive : ''}
-                    onClick={() => setFolder(FolderType.Group)}>群组
+            <button className={folder === 'Group' ? styles.folderActive : ''}
+                    onClick={() => setFolder('Group')}>群组
             </button>
           </div>
         </div>
-  
+        
         <SidebarRooms folder={folder} />
       </div>
     </div>
