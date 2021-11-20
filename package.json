@@ -4,7 +4,7 @@
   "author": "RainbowBird <rbxin2003@outlook.com>",
   "description": "A client for (maybe) any IM made with Electron",
   "repository": "git@github.com:Icalingua/Icalingua-React.git",
-  "license": "GPL-3.0",
+  "license": "AGPL-3.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
