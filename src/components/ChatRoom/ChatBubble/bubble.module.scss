@@ -2,8 +2,7 @@
 
 .bubble {
   display: flex;
-  //min-width: 80px;
-  //min-height: 80px;
+  max-width: 45%;
   margin: 8px 0;
 
   .userAvatar {
@@ -15,6 +14,7 @@
 
   .message {
     min-width: 100px;
+    max-width: 90%;
     margin-left: 8px;
     padding: 8px;
     border-radius: 8px;
@@ -31,12 +31,16 @@
     }
 
     .content {
-      margin-bottom: 0;
+      margin-bottom: 6px;
+      text-align: justify;
+      white-space: break-spaces;
+      word-break: break-all;
     }
 
     .timestamp {
       font-size: 12px;
-      margin-bottom: 4px;
+      float: right;
+      //margin-bottom: 1px;
       color: $secondary-text-color;
     }
   }

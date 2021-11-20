@@ -7,21 +7,27 @@ import ChatRoom from './ChatRoom'
 
 export function Container({ room }: { room?: Room }) {
   const store = useStore()
-  
+
   return (
     <div className={styles.chatContainer}>
-      {room ?
-        <ChatRoom room={room} /> :
-        <div>
+      {room ? (
+        <ChatRoom room={room} />
+      ) : (
+        <div style={{ padding: 8 }}>
           <p>Icalingua-React 1.0</p>
-          
+
           <p>
-            {store.getState().onlineData?.sysInfo.split('\n').map((i: string) =>
-              <span key={i} style={{ display: 'block' }}>{i}</span>,
-            )}
+            {store
+              .getState()
+              .onlineData?.sysInfo.split('\n')
+              .map((i: string) => (
+                <span key={i} style={{ display: 'block' }}>
+                  {i}
+                </span>
+              ))}
           </p>
         </div>
-      }
+      )}
     </div>
   )
 }

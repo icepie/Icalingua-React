@@ -29,17 +29,17 @@
     .caption {
       display: flex;
       flex-direction: column;
-      flex-wrap: nowrap;
-      margin-left: 1rem;
-      width: 0;
       flex-grow: 1;
+      flex-wrap: nowrap;
+      width: 0;
+      margin-left: 1rem;
 
       p {
-        margin: unset;
-
         overflow: hidden;
-        text-overflow: ellipsis;
+
+        margin: unset;
         white-space: nowrap;
+        text-overflow: ellipsis;
       }
 
       .roomName {
@@ -49,9 +49,9 @@
       .lastMessage {
         color: $secondary-text-color;
 
-        span {
-          color: $primary-text-color;
-        }
+        // span {
+        //   color: $primary-text-color;
+        // }
       }
     }
   }
