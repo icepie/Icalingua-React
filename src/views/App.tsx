@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { updateOnlineData, updateRooms, updateRoomsSingle } from '../app/actions/account'
-import { updateRoom } from '../app/actions/ui'
+import { joinRoom, updateRoom } from '../app/actions/ui'
 import { AppDispatch } from '../app/store'
 import { AppContainer } from '../components/AppContainer'
 import AppSidebar from '../components/AppSidebar'
@@ -14,6 +14,13 @@ import { OnlineData } from '../types/RuntimeTypes'
 export default function App() {
   const dispatch: AppDispatch = useDispatch()
   const [loading, setLoading] = useState(true)
+
+  const handleKeyUp = (event: React.KeyboardEvent) => {
+    console.log(event)
+    if (event.key === 'Escape') {
+      dispatch(joinRoom(undefined))
+    }
+  }
 
   const initSubscribe = () => {
     events.account.on('updateBot', async (bot: Bridge) => {
@@ -40,7 +47,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className="layout">
+    <div className="layout" tabIndex={-1} onKeyUp={handleKeyUp}>
       {!loading ? (
         <>
           <AppSidebar />
