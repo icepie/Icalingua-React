@@ -20,8 +20,41 @@ const randomUsernameColor = () => {
     // '#9e9e9e',
     // '#607d8b',
   ]
-  
+
   return colors[Math.floor(Math.random() * colors.length)]
 }
 
-export { randomUsernameColor }
+function isObject(obj: any) {
+  return Object.prototype.toString.call(obj) === '[object Object]'
+}
+
+const mergeObject = (target: any, ...arg: any[]) => {
+  if (!isObject(target)) {
+    return target
+  }
+
+  if (arg.length === 0) {
+    return target
+  }
+
+  const source = arg[0]
+
+  if (isObject(source)) {
+    for (const key in source) {
+      if (source.hasOwnProperty(key)) {
+        if (isObject(source[key])) {
+          if (!target[key]) {
+            target[key] = {}
+          }
+          mergeObject(target[key], source[key])
+        } else {
+          target[key] = source[key]
+        }
+      }
+    }
+  }
+
+  return target
+}
+
+export { randomUsernameColor, mergeObject }

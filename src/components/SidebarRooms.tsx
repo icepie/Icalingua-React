@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect, useDispatch } from 'react-redux'
-import { joinRoom } from '../actions/ui'
 import { getRoom } from '../adapters/account'
+import { joinRoom } from '../app/actions/ui'
 import { RootState } from '../app/store'
 import { Room } from '../types/RoomTypes'
 import { getRoomAvatarUrl } from '../utils/apis'

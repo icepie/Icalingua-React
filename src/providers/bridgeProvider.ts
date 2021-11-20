@@ -46,7 +46,7 @@ export class Bridge {
       })
     },
     attachMessageEvents: () => {
-      bridgeSocket.on('addMessage', (roomId: number, message: Message) => {
+      bridgeSocket.on('addMessage', ({ roomId, message }: { roomId: number; message: Message }) => {
         events.messages.emit('addMessage', roomId, message)
       })
 
@@ -60,6 +60,10 @@ export class Bridge {
           return { ...i, search: i.roomName + i.roomId }
         })
         events.rooms.emit('updateRooms', this._rooms)
+      })
+
+      bridgeSocket.on('updateRoom', (room: Room) => {
+        events.rooms.emit('updateRoom', room)
       })
     },
   }

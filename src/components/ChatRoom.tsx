@@ -1,8 +1,9 @@
 import { message } from 'antd'
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { putMessages } from '../actions/room'
 import { getMessages } from '../adapters/room'
+import { putMessages } from '../app/actions/room'
+import { events } from '../providers/eventProvider'
 import { Message, Room } from '../types/RoomTypes'
 import styles from './ChatRoom.module.scss'
 import ChatBubble from './ChatRoom/ChatBubble'
@@ -12,11 +13,18 @@ export default function ChatRoom({ room }: { room: Room }) {
   const [messages, setMessages] = useState<Message[] | undefined>()
   const bottomElem = useRef<HTMLDivElement>(null)
 
-  // TODO: 监听消息变动
-  const attachEvents = () => {}
-
   const scrollToButton = () => {
     bottomElem.current!.scrollIntoView({ behavior: 'auto' })
+  }
+
+  const attachEvents = () => {
+    events.messages.on('addMessage', (roomId: number, message: Message) => {
+      if (roomId === room.roomId) {
+        console.log(roomId, room.roomId)
+        setMessages((messages) => [...(messages || []), message])
+        scrollToButton()
+      }
+    })
   }
 
   useEffect(() => {
