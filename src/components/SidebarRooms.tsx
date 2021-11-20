@@ -38,9 +38,7 @@ const MyRooms = ({ rooms }: { rooms?: Room[] }) => {
 export default connect((state: RootState, props: { folder: FolderType; search?: string }) => {
   if (props.search !== undefined) {
     return {
-      rooms: state.runtime.rooms?.filter((i) =>
-        i.roomName.toLowerCase().includes(props.search?.toLowerCase() as string),
-      ),
+      rooms: state.runtime.rooms?.filter((i) => i.search.toLowerCase().includes(props.search?.toLowerCase() as string)),
     }
   }
 
