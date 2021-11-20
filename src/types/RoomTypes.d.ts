@@ -13,14 +13,15 @@ export interface Room {
   utime: number // UpdateTime
   at?: boolean | 'all'
   lastMessage: LastMessage
+  search: string
 }
 
 export interface MessageFile {
-  type: string;
-  url: string;
-  size?: number;
-  name?: string;
-  fid?: string;
+  type: string
+  url: string
+  size?: number
+  name?: string
+  fid?: string
 }
 
 export interface Message {

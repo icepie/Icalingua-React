@@ -8,7 +8,7 @@ import { getRoomAvatarUrl } from '../utils/apis'
 import { FolderType } from './AppSidebar'
 import styles from './SidebarRooms.module.scss'
 
-const Rooms = ({ rooms }: { rooms?: Room[] }) => {
+const MyRooms = ({ rooms }: { rooms?: Room[] }) => {
   const dispatch = useDispatch()
 
   const enterRoom = async (roomId: number) => {
@@ -35,30 +35,21 @@ const Rooms = ({ rooms }: { rooms?: Room[] }) => {
   )
 }
 
-const mapRoomsStateToProps = (state: RootState) => ({
-  rooms: state.runtime.rooms,
-})
-
-// TODO: 好友&群组列表？
-const mapFriendsStateToProps = (state: RootState) => ({
-  rooms: state.runtime.rooms?.filter((room) => room.roomId > 0),
-})
-
-const mapGroupsStateToProps = (state: RootState) => ({
-  rooms: state.runtime.rooms?.filter((room) => room.roomId < 0),
-})
-
-const SidebarAllRooms = connect(mapRoomsStateToProps)(Rooms)
-const SidebarFriends = connect(mapFriendsStateToProps)(Rooms)
-const SidebarGroups = connect(mapGroupsStateToProps)(Rooms)
-
-export default ({ folder }: { folder: FolderType }) => {
-  switch (folder) {
-    case 'All':
-      return <SidebarAllRooms />
-    case 'Friends':
-      return <SidebarFriends />
-    case 'Group':
-      return <SidebarGroups />
+export default connect((state: RootState, props: { folder: FolderType; search?: string }) => {
+  if (props.search !== undefined) {
+    return {
+      rooms: state.runtime.rooms?.filter((i) =>
+        i.roomName.toLowerCase().includes(props.search?.toLowerCase() as string),
+      ),
+    }
   }
-}
+
+  switch (props.folder) {
+    case 'All':
+      return { rooms: state.runtime.rooms }
+    case 'Friends':
+      return state.runtime.rooms?.filter((room) => room.roomId > 0)
+    case 'Group':
+      return state.runtime.rooms?.filter((room) => room.roomId < 0)
+  }
+})(MyRooms)

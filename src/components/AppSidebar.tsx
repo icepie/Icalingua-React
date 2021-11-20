@@ -11,7 +11,17 @@ export type FolderType = 'All' | 'Friends' | 'Group'
 
 export default function AppSidebar() {
   const [folder, setFolder] = useState<FolderType>('All')
+  const [search, setSearch] = useState<string | undefined>(undefined)
   const state: RootState = useStore().getState()
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    if (value.length > 0) {
+      setSearch(value)
+    } else {
+      setSearch(undefined)
+    }
+  }
 
   return (
     <div className={styles.chatSidebar}>
@@ -23,7 +33,7 @@ export default function AppSidebar() {
             </span>
           </div>
           <div className={styles.searchBox}>
-            <Input placeholder="Search" className={styles.searchInput} />
+            <Input placeholder="Search" className={styles.searchInput} onChange={handleSearch} />
             <SearchOutlined className={styles.searchIcon} />
           </div>
         </div>
@@ -45,7 +55,7 @@ export default function AppSidebar() {
       </div>
 
       <div className={styles.sidebarContent}>
-        <SidebarRooms folder={folder} />
+        <SidebarRooms folder={folder} search={search} />
       </div>
     </div>
   )
