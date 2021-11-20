@@ -14,13 +14,12 @@ export default function ChatRoom({ room }: { room: Room }) {
   const bottomElem = useRef<HTMLDivElement>(null)
 
   const scrollToButton = () => {
-    bottomElem.current!.scrollIntoView({ behavior: 'auto' })
+    bottomElem.current?.scrollIntoView({ behavior: 'auto' })
   }
 
   const attachEvents = () => {
     events.messages.on('addMessage', (roomId: number, message: Message) => {
       if (roomId === room.roomId) {
-        console.log(roomId, room.roomId)
         setMessages((messages) => [...(messages || []), message])
         scrollToButton()
       }

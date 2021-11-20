@@ -16,7 +16,6 @@ export default function App() {
   const [loading, setLoading] = useState(true)
 
   const handleKeyUp = (event: React.KeyboardEvent) => {
-    console.log(event)
     if (event.key === 'Escape') {
       dispatch(joinRoom(undefined))
     }

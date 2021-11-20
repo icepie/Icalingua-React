@@ -5,7 +5,7 @@ import { Room } from '../types/RoomTypes'
 import styles from './AppContainer.module.scss'
 import ChatRoom from './ChatRoom'
 
-export function Container({ room }: { room?: Room }) {
+function Container({ room }: { room?: Room }) {
   const store = useStore()
 
   return (
