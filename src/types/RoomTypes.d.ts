@@ -43,3 +43,24 @@ export interface Message {
   flash?: boolean
   title?: string
 }
+
+export interface AtCacheItem {
+  text: string
+  id: number | 'all'
+}
+
+export interface SendMessageParams {
+  content: string
+  roomId?: number
+  file?: {
+    type: string
+    path: string
+    size: number
+  }
+  replyMessage?: any
+  room?: Room
+  b64img?: string
+  imgpath?: string
+  // at: AtCacheItem[]
+  sticker?: boolean
+}

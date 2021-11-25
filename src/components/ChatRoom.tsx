@@ -7,6 +7,7 @@ import { events } from '../providers/eventProvider'
 import { Message, Room } from '../types/RoomTypes'
 import styles from './ChatRoom.module.scss'
 import ChatBubble from './ChatRoom/ChatBubble'
+import ChatInput from './ChatRoom/ChatInput'
 
 export default function ChatRoom({ room }: { room: Room }) {
   const dispatch = useDispatch()
@@ -56,6 +57,8 @@ export default function ChatRoom({ room }: { room: Room }) {
       </div>
 
       <div ref={bottomElem} />
+
+      <ChatInput roomId={room.roomId} />
     </div>
   )
 }
