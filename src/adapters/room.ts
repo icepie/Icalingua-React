@@ -1,6 +1,7 @@
-import { GET_MESSAGES_OFFSET } from '../constants'
-import { bridgeSocket } from '../providers/bridgeProvider'
-import { Message, SendMessageParams } from '../types/RoomTypes'
+import { bridgeSocket } from 'providers/bridgeProvider'
+import { Message } from 'types/RoomTypes'
+
+const GET_MESSAGES_OFFSET = 0
 
 /* getMessages: 从storage中获取当前room的聊天记录 */
 const getMessages = (roomId: number): Promise<Message[]> => {
@@ -8,8 +9,4 @@ const getMessages = (roomId: number): Promise<Message[]> => {
   return new Promise((resolve) => bridgeSocket.emit('fetchMessages', roomId, GET_MESSAGES_OFFSET, resolve))
 }
 
-const sendMessage = async (props: SendMessageParams) => {
-  bridgeSocket.emit('sendMessage', props)
-}
-
-export { getMessages, sendMessage }
+export { getMessages }

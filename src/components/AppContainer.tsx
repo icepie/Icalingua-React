@@ -1,12 +1,12 @@
+import { RootState } from 'app/store'
 import React from 'react'
-import { connect, useStore } from 'react-redux'
-import { RootState } from '../app/store'
-import { Room } from '../types/RoomTypes'
+import { connect, useSelector } from 'react-redux'
+import { Room } from 'types/RoomTypes'
 import styles from './AppContainer.module.scss'
 import ChatRoom from './ChatRoom'
 
-function Container({ room }: { room?: Room }) {
-  const store = useStore()
+function MyContainer({ room }: { room: Room | null }) {
+  const onlineData = useSelector((state: RootState) => state.account.onlineData)
 
   return (
     <div className={styles.chatContainer}>
@@ -17,14 +17,11 @@ function Container({ room }: { room?: Room }) {
           <p>Icalingua-React 1.0</p>
 
           <p>
-            {store
-              .getState()
-              .onlineData?.sysInfo.split('\n')
-              .map((i: string) => (
-                <span key={i} style={{ display: 'block' }}>
-                  {i}
-                </span>
-              ))}
+            {onlineData?.sysInfo?.split('\n').map((i: string) => (
+              <span key={i} style={{ display: 'block' }}>
+                {i}
+              </span>
+            ))}
           </p>
         </div>
       )}
@@ -32,8 +29,8 @@ function Container({ room }: { room?: Room }) {
   )
 }
 
-const mapRoomsStateToProps = (state: RootState) => ({
-  room: state.currentRoom.room,
+const mapRoomsState = (state: RootState) => ({
+  room: state.ui.room,
 })
 
-export const AppContainer = connect(mapRoomsStateToProps)(Container)
+export const AppContainer = connect(mapRoomsState)(MyContainer)

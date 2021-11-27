@@ -45,13 +45,15 @@
       <option name="FORCE_QUOTE_STYlE" value="true" />
       <option name="ENFORCE_TRAILING_COMMA" value="WhenMultiline" />
       <option name="VAR_DECLARATION_WRAP" value="0" />
-      <option name="OBJECT_LITERAL_WRAP" value="0" />
+      <option name="OBJECT_LITERAL_WRAP" value="1" />
       <option name="IMPORTS_WRAP" value="0" />
       <option name="UNION_TYPES_WRAP" value="0" />
       <option name="SPACES_WITHIN_OBJECT_LITERAL_BRACES" value="true" />
       <option name="SPACES_WITHIN_IMPORTS" value="true" />
       <option name="CHAINED_CALL_DOT_ON_NEW_LINE" value="false" />
       <option name="IMPORT_SORT_MODULE_NAME" value="true" />
+      <option name="IMPORT_PREFER_ABSOLUTE_PATH" value="TRUE" />
+      <option name="USE_PATH_MAPPING" value="DIFFERENT_PATHS" />
     </TypeScriptCodeStyleSettings>
     <VueCodeStyleSettings>
       <option name="INTERPOLATION_NEW_LINE_AFTER_START_DELIMITER" value="false" />
@@ -1140,6 +1142,7 @@
     <codeStyleSettings language="TypeScript">
       <option name="ALIGN_MULTILINE_CHAINED_METHODS" value="true" />
       <option name="METHOD_CALL_CHAIN_WRAP" value="1" />
+      <option name="ARRAY_INITIALIZER_WRAP" value="1" />
       <option name="SOFT_MARGINS" value="80" />
       <indentOptions>
         <option name="INDENT_SIZE" value="2" />
