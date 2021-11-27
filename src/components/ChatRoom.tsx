@@ -42,7 +42,7 @@ export default function ChatRoom({ room }: { room: Room }) {
   }, [room.roomId])
 
   return (
-    <div>
+    <div style={{ height: '100%' }}>
       <div className={styles.chatTopBar}>
         <span className={styles.chatTopBarAvatar}>
           <img src={room.avatar} alt="avatar" />
