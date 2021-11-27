@@ -1,7 +1,6 @@
-// Account adapter
-import { bridgeSocket } from '../providers/bridgeProvider'
-import { Room } from '../types/RoomTypes'
-import { FriendSearchable, GroupSearchable } from '../types/RuntimeTypes'
+import { bridgeSocket } from 'providers/bridgeProvider'
+import { Room } from 'types/RoomTypes'
+import { FriendSearchable, GroupSearchable } from 'types/RuntimeTypes'
 
 const getFriends = async (): Promise<FriendSearchable[]> => {
   return new Promise((resolve) => bridgeSocket.emit('getFriendsFallback', resolve))

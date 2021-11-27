@@ -1,15 +1,13 @@
 import { sign } from 'noble-ed25519'
 import { io, Socket } from 'socket.io-client'
-import { Message, Room } from '../types/RoomTypes'
-import { BridgeVersionInfo, OnlineData } from '../types/RuntimeTypes'
+import { Message, Room } from 'types/RoomTypes'
+import { BridgeVersionInfo, OnlineData, OnlineDataBridge } from 'types/RuntimeTypes'
 import { getConfig } from './configProvider'
 import { events } from './eventProvider'
 
 export let bridgeSocket: Socket
 
 export class Bridge {
-  protected _uin = 0
-  protected _nickname = 'NULL'
   protected _bridgeVersion: BridgeVersionInfo
   protected _onlineData?: OnlineData
   protected _rooms?: Room[]
@@ -37,10 +35,18 @@ export class Bridge {
         events.account.emit('setOffline', message)
       })
 
-      bridgeSocket.on('onlineData', async (data: OnlineData) => {
-        this._uin = data.uin
-        this._nickname = data.nick
-        this._onlineData = data
+      bridgeSocket.on('onlineData', async (data: OnlineDataBridge) => {
+        this._onlineData = {
+          online: data.online,
+          nickname: data.nick,
+          user_id: data.uin,
+          sysInfo: data.sysInfo,
+          priority: data.priority,
+
+          // 兼容Bridge：暂时无接口
+          sex: 'female',
+          age: 0,
+        }
 
         events.account.emit('updateBot', this)
       })
@@ -76,22 +82,6 @@ export class Bridge {
 
   public get onlineData() {
     return this._onlineData
-  }
-
-  public get uin() {
-    return this._uin
-  }
-
-  public set uin(uin: number) {
-    this._uin = uin
-  }
-
-  public get nickname() {
-    return this._nickname
-  }
-
-  public set nickname(nickname: string) {
-    this._nickname = nickname
   }
 
   public get rooms() {

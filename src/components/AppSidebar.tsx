@@ -1,9 +1,9 @@
 import { SearchOutlined } from '@ant-design/icons'
 import { Input } from 'antd'
+import { RootState } from 'app/store'
 import React, { useState } from 'react'
-import { useStore } from 'react-redux'
-import { RootState } from '../app/store'
-import { getUserAvatarUrl } from '../utils/apis'
+import { useSelector } from 'react-redux'
+import { getUserAvatarUrl } from 'utils/apis'
 import styles from './AppSidebar.module.scss'
 import SidebarRooms from './SidebarRooms'
 
@@ -12,7 +12,7 @@ export type FolderType = 'All' | 'Friends' | 'Group'
 export default function AppSidebar() {
   const [folder, setFolder] = useState<FolderType>('All')
   const [search, setSearch] = useState<string | undefined>(undefined)
-  const state: RootState = useStore().getState()
+  const onlineData = useSelector((state: RootState) => state.account.onlineData)
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -29,7 +29,7 @@ export default function AppSidebar() {
         <div className={styles.sidebarTitle}>
           <div className={styles.menuButton}>
             <span>
-              <img src={getUserAvatarUrl(state.onlineData?.uin as number)} alt="avatar" />
+              <img src={getUserAvatarUrl(onlineData?.user_id as number)} alt="avatar" />
             </span>
           </div>
           <div className={styles.searchBox}>

@@ -4,19 +4,22 @@ import Emitter from 'component-emitter'
 import { logger, newLogProps } from '../utils/logger'
 import { Bridge } from './bridgeProvider'
 
-const ui = new Emitter
-const account = new Emitter
-const rooms = new Emitter
-const messages = new Emitter
+const ui = new Emitter()
+const account = new Emitter()
+const rooms = new Emitter()
+const messages = new Emitter()
 
 export const events = {
-  ui, account, rooms, messages,
+  ui,
+  account,
+  rooms,
+  messages,
 }
 
 // Attach Events
 account.on('loginSuccess', (bot: Bridge) => {
   // console.log(bot)
-  logger.success(newLogProps(`用户 ${bot.nickname}(${bot.uin}) 登录成功`))
+  logger.success(newLogProps(`用户 ${bot.onlineData?.nickname}(${bot.onlineData?.user_id}) 登录成功`))
 })
 
 account.on('loginFailed', () => {
@@ -41,4 +44,3 @@ ui.on('showError', (args: ArgsProps) => {
   notification.error({ ...args })
   logger.error({ ...args })
 })
-
