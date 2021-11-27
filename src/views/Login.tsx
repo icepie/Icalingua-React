@@ -1,6 +1,6 @@
 import { Button, Col, Form, Input, Row } from 'antd'
+import { getConfig, saveConfig } from 'providers/configProvider'
 import React, { useEffect } from 'react'
-import { getConfig, saveConfig } from '../providers/configProvider'
 
 export default function Login() {
   const [form] = Form.useForm()

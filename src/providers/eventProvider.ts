@@ -1,8 +1,9 @@
 import { notification } from 'antd'
 import { ArgsProps } from 'antd/lib/notification'
 import Emitter from 'component-emitter'
-import { logger, newLogProps } from '../utils/logger'
+import { logger, newLogProps } from 'utils/logger'
 import { Bridge } from './bridgeProvider'
+import { getConfig, saveConfig } from './configProvider'
 
 const ui = new Emitter()
 const account = new Emitter()
@@ -23,6 +24,7 @@ account.on('loginSuccess', (bot: Bridge) => {
 })
 
 account.on('loginFailed', () => {
+  saveConfig({ ...getConfig(), privateKey: '' }) // 防止反复重定向
   location.href = '/login'
 })
 
