@@ -1,10 +1,10 @@
+import { getRoom } from 'adapters/account'
+import { joinRoom } from 'app/features/ui/uiSlices'
+import { RootState } from 'app/store'
 import React from 'react'
 import { connect, useDispatch } from 'react-redux'
-import { getRoom } from '../adapters/account'
-import { joinRoom } from '../app/actions/ui'
-import { RootState } from '../app/store'
-import { Room } from '../types/RoomTypes'
-import { getRoomAvatarUrl } from '../utils/apis'
+import { Room } from 'types/RoomTypes'
+import { getRoomAvatarUrl } from 'utils/apis'
 import { FolderType } from './AppSidebar'
 import styles from './SidebarRooms.module.scss'
 
@@ -38,16 +38,16 @@ const MyRooms = ({ rooms }: { rooms?: Room[] }) => {
 export default connect((state: RootState, props: { folder: FolderType; search?: string }) => {
   if (props.search !== undefined) {
     return {
-      rooms: state.runtime.rooms?.filter((i) => i.search.toLowerCase().includes(props.search?.toLowerCase() as string)),
+      rooms: state.account.rooms?.filter((i) => i.search.toLowerCase().includes(props.search?.toLowerCase() as string)),
     }
   }
 
   switch (props.folder) {
     case 'All':
-      return { rooms: state.runtime.rooms }
+      return { rooms: state.account.rooms }
     case 'Friends':
-      return state.runtime.rooms?.filter((room) => room.roomId > 0)
+      return state.account.rooms?.filter((room) => room.roomId > 0)
     case 'Group':
-      return state.runtime.rooms?.filter((room) => room.roomId < 0)
+      return state.account.rooms?.filter((room) => room.roomId < 0)
   }
 })(MyRooms)

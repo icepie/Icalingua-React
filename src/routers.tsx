@@ -1,5 +1,5 @@
+import { getConfig } from 'providers/configProvider'
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
-import { getConfig } from './providers/configProvider'
 import App from './views/App'
 import Login from './views/Login'
 

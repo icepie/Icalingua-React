@@ -22,6 +22,7 @@ export const initLocalStorage = () => {
 let config = initLocalStorage()
 export const getConfig = () => config
 export const saveConfig = (_config: Config) => {
+  // eslint-disable-next-line guard-for-in
   for (let conf in _config) {
     // @ts-ignore
     window.localStorage.setItem(conf, _config[conf])

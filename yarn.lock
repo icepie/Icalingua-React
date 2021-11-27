@@ -1413,6 +1413,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"date-fns@npm:^2.26.0":
+  version: 2.26.0
+  resolution: "date-fns@npm:2.26.0"
+  checksum: 49ad59bc788134a6552ef4e4af0d18792001c1ca0070d543de4f36aba5761058b6e6a57b8ca51dd3b0f07f3bd55376b8bc69602bd7940648ba3869c5253c6ae8
+  languageName: node
+  linkType: hard
+
 "date-format@npm:^2.1.0":
   version: 2.1.0
   resolution: "date-format@npm:2.1.0"
@@ -2476,12 +2483,12 @@ fsevents@~2.3.2:
     "@vitejs/plugin-react": ^1.0.0
     antd: ^4.16.13
     axios: ^0.21.4
+    date-fns: ^2.26.0
     eslint: ^7.32.0
     eslint-config-alloy: ^4.3.0
     eslint-plugin-react: ^7.26.1
     md5: ^2.3.0
     mockjs: ^1.1.0
-    moment: ^2.29.1
     noble-ed25519: ^1.2.6
     nodejs-base64: ^2.0.0
     oicq: ^1.21.2
@@ -3151,7 +3158,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"moment@npm:^2.24.0, moment@npm:^2.25.3, moment@npm:^2.29.1":
+"moment@npm:^2.24.0, moment@npm:^2.25.3":
   version: 2.29.1
   resolution: "moment@npm:2.29.1"
   checksum: 1e14d5f422a2687996be11dd2d50c8de3bd577c4a4ca79ba5d02c397242a933e5b941655de6c8cb90ac18f01cc4127e55b4a12ae3c527a6c0a274e455979345e

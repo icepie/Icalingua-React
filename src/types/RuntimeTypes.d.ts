@@ -12,6 +12,12 @@ export interface BridgeVersionInfo {
 
 export interface OnlineData extends StrangerInfo {
   online: boolean
+  priority?: 1 | 2 | 3 | 4 | 5
+  sysInfo?: string
+}
+
+export interface OnlineDataBridge {
+  online: boolean
   nick: string
   uin: number
   priority?: 1 | 2 | 3 | 4 | 5

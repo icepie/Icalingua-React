@@ -7,9 +7,9 @@ export default interface InitialStates {
     groups?: GroupSearchable[]
     rooms?: Room[]
   }
-  
+
   onlineData?: OnlineData
-  
+
   currentRoom: {
     room?: Room
     messages?: Message[]
