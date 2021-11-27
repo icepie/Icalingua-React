@@ -19,7 +19,8 @@
     "baseUrl": "src"
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "typings.d.ts"
   ],
   "exclude": [
     "node_modules",
