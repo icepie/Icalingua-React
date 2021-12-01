@@ -16,7 +16,6 @@ export const logger = {
 }
 
 export function newLogProps(message: string, title = '') {
-  let retProps: ArgsProps
-  retProps = { description: message, message: title }
+  const retProps: ArgsProps = { description: message, message: title }
   return retProps
 }

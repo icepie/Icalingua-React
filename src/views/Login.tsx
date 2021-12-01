@@ -1,5 +1,5 @@
 import { Button, Col, Form, Input, Row } from 'antd'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getConfig, saveConfig } from '../providers/configProvider'
 
@@ -18,7 +18,7 @@ export default function Login() {
 
   const login = async () => {
     saveConfig(form.getFieldsValue())
-    location.href = '/'
+    navigate('/', { replace: true }) // 不在 history 里留记录，因为不应该留
   }
 
   return (
