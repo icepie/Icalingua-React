@@ -40,7 +40,7 @@ const mimes = {
 
 export default function mime(ext: string) {
   let extLowerCase = ext.toLowerCase()
-  if (extLowerCase.startsWith('.')) extLowerCase = extLowerCase.substr(1)
+  if (extLowerCase.startsWith('.')) extLowerCase = extLowerCase.substring(1)
   // @ts-ignore
   if (mimes[extLowerCase]) {
     // @ts-ignore

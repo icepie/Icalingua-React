@@ -10,10 +10,7 @@ export default function ChatBubble({ message }: { message: Message }) {
   const onlineData = useSelector((state: RootState) => state.account.onlineData)
 
   // 兼容Bridge：把You换成nickname
-  let username = message.username
-  if (message.senderId === onlineData?.user_id) {
-    username = onlineData?.nickname as string
-  }
+  const username = message.senderId === onlineData?.user_id ? onlineData?.nickname : message.username
 
   return (
     <div className={styles.bubble}>
