@@ -1,15 +1,15 @@
 import { getMessages } from 'adapters/room'
 import { message } from 'antd'
 import { putMessages } from 'app/features/room/roomSlices'
+import { useAppDispatch } from 'app/store'
 import { events } from 'providers/eventProvider'
 import { useEffect, useRef, useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { Message, Room } from 'types/RoomTypes'
 import styles from './ChatRoom.module.scss'
 import ChatBubble from './ChatRoom/ChatBubble'
 
 export default function ChatRoom({ room }: { room: Room }) {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const [messages, setMessages] = useState<Message[] | undefined>()
   const bottomElem = useRef<HTMLDivElement>(null)
 

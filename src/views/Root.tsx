@@ -4,17 +4,11 @@ import { Outlet, useNavigate } from 'react-router-dom'
 
 const Root = () => {
   const requireLogin = getConfig().server === '' || getConfig().privateKey === ''
-  console.log({ requireLogin })
   const navigate = useNavigate()
   useEffect(() => {
     if (requireLogin) navigate('/login')
   }, [])
-  return (
-    <>
-      <div />
-      <Outlet />
-    </>
-  )
+  return <Outlet />
 }
 
 export default Root

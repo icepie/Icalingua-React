@@ -1,15 +1,14 @@
 import { getRoom } from 'adapters/account'
 import { joinRoom } from 'app/features/ui/uiSlices'
-import { RootState } from 'app/store'
-import React from 'react'
-import { connect, useDispatch } from 'react-redux'
+import { RootState, useAppDispatch } from 'app/store'
+import { connect } from 'react-redux'
 import { Room } from 'types/RoomTypes'
 import { getRoomAvatarUrl } from 'utils/apis'
 import { FolderType } from './AppSidebar'
 import styles from './SidebarRooms.module.scss'
 
 const MyRooms = ({ rooms }: { rooms?: Room[] }) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const enterRoom = async (roomId: number) => {
     dispatch(joinRoom(await getRoom(roomId)))

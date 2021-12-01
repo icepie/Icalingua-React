@@ -1,13 +1,15 @@
 import { Button, Col, Form, Input, Row } from 'antd'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getConfig, saveConfig } from '../providers/configProvider'
 
 export default function Login() {
   const requireLogin = getConfig().server === '' || getConfig().privateKey === ''
   const navigate = useNavigate()
-  if (!requireLogin) navigate('/')
-  
+  useEffect(() => {
+    if (!requireLogin) navigate('/')
+  }, [])
+
   const [form] = Form.useForm()
 
   useEffect(() => {
