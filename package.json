@@ -32,6 +32,7 @@
     "socket.io-client": "^4.4.0"
   },
   "devDependencies": {
+    "@types/component-emitter": "^1.2.11",
     "@types/md5": "^2.3.1",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
