@@ -61,6 +61,6 @@ export interface SendMessageParams {
   room?: Room
   b64img?: string
   imgpath?: string
-  // at: AtCacheItem[]
+  at: AtCacheItem[]
   sticker?: boolean
 }

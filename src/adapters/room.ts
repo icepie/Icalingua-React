@@ -1,5 +1,5 @@
 import { bridgeSocket } from 'providers/bridgeProvider'
-import { Message } from 'types/RoomTypes'
+import { Message, SendMessageParams } from 'types/RoomTypes'
 
 const GET_MESSAGES_OFFSET = 0
 
@@ -9,4 +9,8 @@ const getMessages = (roomId: number): Promise<Message[]> => {
   return new Promise((resolve) => bridgeSocket.emit('fetchMessages', roomId, GET_MESSAGES_OFFSET, resolve))
 }
 
-export { getMessages }
+const sendMessage = (data: SendMessageParams) => {
+  bridgeSocket.emit('sendMessage', data)
+}
+
+export { getMessages, sendMessage }
