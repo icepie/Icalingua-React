@@ -1,17 +1,16 @@
-import { RootState } from 'app/store'
+import { RootState, useAppSelector } from 'app/store'
 import React from 'react'
-import { connect, useSelector } from 'react-redux'
-import { Room } from 'types/RoomTypes'
 import styles from './AppContainer.module.scss'
 import ChatRoom from './ChatRoom'
 
-function MyContainer({ room }: { room: Room | null }) {
-  const onlineData = useSelector((state: RootState) => state.account.onlineData)
+export default function AppContainer() {
+  const onlineData = useAppSelector((state: RootState) => state.account.onlineData)
+  const room = useAppSelector((state: RootState) => state.ui.room)
 
   return (
     <div className={styles.chatContainer}>
       {room ? (
-        <ChatRoom room={room} />
+        <ChatRoom />
       ) : (
         <div style={{ padding: 8 }}>
           <p>Icalingua-React 1.0</p>
@@ -28,9 +27,3 @@ function MyContainer({ room }: { room: Room | null }) {
     </div>
   )
 }
-
-const mapRoomsState = (state: RootState) => ({
-  room: state.ui.room,
-})
-
-export const AppContainer = connect(mapRoomsState)(MyContainer)

@@ -1,5 +1,4 @@
-import { RootState } from 'app/store'
-import { useSelector } from 'react-redux'
+import { RootState, useAppSelector } from 'app/store'
 import { Message } from 'types/RoomTypes'
 import { getUserAvatarUrl } from 'utils/apis'
 import { randomUsernameColor } from 'utils/tools'
@@ -7,7 +6,7 @@ import styles from './bubble.module.scss'
 
 export default function ChatBubble({ message }: { message: Message }) {
   // TODO: 进入房间每个人获取一个颜色
-  const onlineData = useSelector((state: RootState) => state.account.onlineData)
+  const onlineData = useAppSelector((state: RootState) => state.account.onlineData)
 
   // 兼容Bridge：把You换成nickname
   const username = message.senderId === onlineData?.user_id ? onlineData?.nickname : message.username

@@ -1,7 +1,7 @@
 import { Button, Col, Form, Input, Row } from 'antd'
+import { getConfig, saveConfig } from 'providers/configProvider'
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getConfig, saveConfig } from '../providers/configProvider'
 
 export default function Login() {
   const requireLogin = getConfig().server === '' || getConfig().privateKey === ''

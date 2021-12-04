@@ -1,18 +1,19 @@
 import { getMessages } from 'adapters/room'
 import { message } from 'antd'
-import { putMessages } from 'app/features/room/roomSlices'
-import { useAppDispatch } from 'app/store'
+import { addMessage, putMessages } from 'app/features/room/roomSlices'
+import { RootState, useAppDispatch, useAppSelector } from 'app/store'
 import { events } from 'providers/eventProvider'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { Message, Room } from 'types/RoomTypes'
 import styles from './ChatRoom.module.scss'
 import ChatBubble from './ChatRoom/ChatBubble'
 import ChatInput from './ChatRoom/ChatInput'
 
-export default function ChatRoom({ room }: { room: Room }) {
+export default function ChatRoom() {
   const dispatch = useAppDispatch()
-  const [messages, setMessages] = useState<Message[] | undefined>()
   const bottomElem = useRef<HTMLDivElement>(null)
+  const room = useAppSelector((state: RootState) => state.ui.room) as Room
+  const messages = useAppSelector((state: RootState) => state.room.messages) as Message[]
 
   const scrollToButton = () => {
     bottomElem.current?.scrollIntoView({ behavior: 'auto' })
@@ -21,7 +22,8 @@ export default function ChatRoom({ room }: { room: Room }) {
   const attachEvents = () => {
     events.messages.on('addMessage', (roomId: number, message: Message) => {
       if (roomId === room.roomId) {
-        setMessages((messages) => [...(messages || []), message])
+        console.log(messages[messages.length - 1]._id, message._id)
+        if (messages[messages.length - 1]._id !== message._id) dispatch(addMessage(message))
         scrollToButton()
       }
     })
@@ -31,8 +33,6 @@ export default function ChatRoom({ room }: { room: Room }) {
     const fetchMessages = async () => {
       const messages = await getMessages(room.roomId as number)
       dispatch(putMessages(messages))
-      setMessages(messages)
-
       scrollToButton() // 滚动到底部
     }
 
@@ -42,7 +42,7 @@ export default function ChatRoom({ room }: { room: Room }) {
   }, [room.roomId])
 
   return (
-    <div style={{ height: '100%' }}>
+    <div>
       <div className={styles.chatTopBar}>
         <span className={styles.chatTopBarAvatar}>
           <img src={room.avatar} alt="avatar" />

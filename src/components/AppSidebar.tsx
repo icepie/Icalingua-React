@@ -1,8 +1,7 @@
 import { SearchOutlined } from '@ant-design/icons'
 import { Input } from 'antd'
-import { RootState } from 'app/store'
+import { RootState, useAppSelector } from 'app/store'
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
 import { getUserAvatarUrl } from 'utils/apis'
 import styles from './AppSidebar.module.scss'
 import SidebarRooms from './SidebarRooms'
@@ -12,7 +11,7 @@ export type FolderType = 'All' | 'Friends' | 'Group'
 export default function AppSidebar() {
   const [folder, setFolder] = useState<FolderType>('All')
   const [search, setSearch] = useState<string | undefined>(undefined)
-  const onlineData = useSelector((state: RootState) => state.account.onlineData)
+  const onlineData = useAppSelector((state: RootState) => state.account.onlineData)
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
