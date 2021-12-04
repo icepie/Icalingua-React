@@ -1,15 +1,28 @@
 import { getRoom } from 'adapters/account'
 import { joinRoom } from 'app/features/ui/uiSlices'
-import { RootState } from 'app/store'
-import React from 'react'
-import { connect, useDispatch } from 'react-redux'
+import { RootState, useAppDispatch, useAppSelector } from 'app/store'
+import { connect } from 'react-redux'
 import { Room } from 'types/RoomTypes'
 import { getRoomAvatarUrl } from 'utils/apis'
 import { FolderType } from './AppSidebar'
 import styles from './SidebarRooms.module.scss'
 
-const MyRooms = ({ rooms }: { rooms?: Room[] }) => {
-  const dispatch = useDispatch()
+const SidebarRooms = ({ folder, search }: { folder: FolderType; search: string | undefined }) => {
+  const dispatch = useAppDispatch()
+
+  const rooms = useAppSelector((state) => {
+    if (search !== undefined) {
+      return state.account.rooms?.filter((i) => i.search.toLowerCase().includes(search?.toLowerCase() as string))
+    }
+    switch (folder) {
+      case 'All':
+        return state.account.rooms
+      case 'Friends':
+        return state.account.rooms?.filter((room) => room.roomId > 0)
+      case 'Group':
+        return state.account.rooms?.filter((room) => room.roomId < 0)
+    }
+  })
 
   const enterRoom = async (roomId: number) => {
     dispatch(joinRoom(await getRoom(roomId)))
@@ -35,19 +48,4 @@ const MyRooms = ({ rooms }: { rooms?: Room[] }) => {
   )
 }
 
-export default connect((state: RootState, props: { folder: FolderType; search?: string }) => {
-  if (props.search !== undefined) {
-    return {
-      rooms: state.account.rooms?.filter((i) => i.search.toLowerCase().includes(props.search?.toLowerCase() as string)),
-    }
-  }
-
-  switch (props.folder) {
-    case 'All':
-      return { rooms: state.account.rooms }
-    case 'Friends':
-      return state.account.rooms?.filter((room) => room.roomId > 0)
-    case 'Group':
-      return state.account.rooms?.filter((room) => room.roomId < 0)
-  }
-})(MyRooms)
+export default SidebarRooms

@@ -1,18 +1,19 @@
 import { updateOnlineData, updateRooms, updateRoomsSingle } from 'app/features/account/accountSlices'
 import { joinRoom } from 'app/features/ui/uiSlices'
-import { AppDispatch } from 'app/store'
+import { AppDispatch, useAppDispatch } from 'app/store'
 import { AppContainer } from 'components/AppContainer'
 import AppSidebar from 'components/AppSidebar'
 import { PageLoading } from 'components/Loading'
 import { Bridge, createBridge } from 'providers/bridgeProvider'
+import { getConfig } from 'providers/configProvider'
 import { events } from 'providers/eventProvider'
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { Room } from 'types/RoomTypes'
 import { OnlineData } from 'types/RuntimeTypes'
 
 export default function App() {
-  const dispatch: AppDispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const [loading, setLoading] = useState(true)
 
   const handleKeyUp = (event: React.KeyboardEvent) => {
@@ -40,7 +41,11 @@ export default function App() {
     })
   }
 
+  const navigate = useNavigate()
+
   useEffect(() => {
+    const requireLogin = getConfig().server === '' || getConfig().privateKey === ''
+    if (requireLogin) return navigate('/login', { replace: true }) // 在这里检查配置是否完成，若未完成则不初始化 bridge
     createBridge()
     initSubscribe()
   }, [])
