@@ -22,8 +22,7 @@ export default function ChatRoom() {
   const attachEvents = () => {
     events.messages.on('addMessage', (roomId: number, message: Message) => {
       if (roomId === room.roomId) {
-        console.log(messages[messages.length - 1]._id, message._id)
-        if (messages[messages.length - 1]._id !== message._id) dispatch(addMessage(message))
+        dispatch(addMessage(message))
         scrollToButton()
       }
     })
@@ -39,6 +38,10 @@ export default function ChatRoom() {
     message.loading({ content: '正在加载聊天记录...', key: 'chat_message' })
     fetchMessages().then(() => message.destroy('chat_message'))
     attachEvents()
+
+    return () => {
+      events.messages.off('addMessage')
+    }
   }, [room.roomId])
 
   return (
