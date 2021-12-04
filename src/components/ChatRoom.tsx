@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Message, Room } from 'types/RoomTypes'
 import styles from './ChatRoom.module.scss'
 import ChatBubble from './ChatRoom/ChatBubble'
+import ChatInput from './ChatRoom/ChatInput'
 
 export default function ChatRoom({ room }: { room: Room }) {
   const dispatch = useAppDispatch()
@@ -41,7 +42,7 @@ export default function ChatRoom({ room }: { room: Room }) {
   }, [room.roomId])
 
   return (
-    <div>
+    <div style={{ height: '100%' }}>
       <div className={styles.chatTopBar}>
         <span className={styles.chatTopBarAvatar}>
           <img src={room.avatar} alt="avatar" />
@@ -56,6 +57,8 @@ export default function ChatRoom({ room }: { room: Room }) {
       </div>
 
       <div ref={bottomElem} />
+
+      <ChatInput roomId={room.roomId} />
     </div>
   )
 }
