@@ -1,9 +1,9 @@
 import { notification } from 'antd'
 import { ArgsProps } from 'antd/lib/notification'
 import Emitter from 'component-emitter'
+import { getConfig, saveConfig } from 'providers/configProvider'
 import { logger, newLogProps } from 'utils/logger'
 import { Bridge } from './bridgeProvider'
-import { getConfig, saveConfig } from './configProvider'
 
 const ui = new Emitter()
 const account = new Emitter()
@@ -19,7 +19,6 @@ export const events = {
 
 // Attach Events
 account.on('loginSuccess', (bot: Bridge) => {
-  // console.log(bot)
   logger.success(newLogProps(`用户 ${bot.onlineData?.nickname}(${bot.onlineData?.user_id}) 登录成功`))
 })
 
