@@ -1,5 +1,5 @@
-import { SearchOutlined } from '@ant-design/icons'
-import { Input } from 'antd'
+import SearchIcon from '@mui/icons-material/Search'
+import TextField from '@mui/material/TextField'
 import { RootState, useAppSelector } from 'app/store'
 import React, { useState } from 'react'
 import { getUserAvatarUrl } from 'utils/apis'
@@ -12,7 +12,7 @@ export default function AppSidebar() {
   const [folder, setFolder] = useState<FolderType>('All')
   const [search, setSearch] = useState<string | undefined>(undefined)
   const onlineData = useAppSelector((state: RootState) => state.account.onlineData)
-
+  
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     if (value.length > 0) {
@@ -21,7 +21,7 @@ export default function AppSidebar() {
       setSearch(undefined)
     }
   }
-
+  
   return (
     <div className={styles.chatSidebar}>
       <div className={styles.sidebarHead}>
@@ -32,11 +32,11 @@ export default function AppSidebar() {
             </span>
           </div>
           <div className={styles.searchBox}>
-            <Input placeholder="Search" className={styles.searchInput} onChange={handleSearch} />
-            <SearchOutlined className={styles.searchIcon} />
+            <TextField placeholder="Search" className={styles.searchInput} onChange={handleSearch} />
+            <SearchIcon className={styles.searchIcon} />
           </div>
         </div>
-
+        
         <div className={styles.foldersTabs}>
           {/* TODO: 支持自定义文件夹 */}
           <div>
@@ -52,7 +52,7 @@ export default function AppSidebar() {
           </div>
         </div>
       </div>
-
+      
       <div className={styles.sidebarContent}>
         <SidebarRooms folder={folder} search={search} />
       </div>
