@@ -1,6 +1,3 @@
-import { ConfigProvider } from 'antd'
-import 'antd/dist/antd.css'
-import zhCN from 'antd/lib/locale/zh_CN'
 import { store } from 'app/store'
 import { initLocalStorage } from 'providers/configProvider'
 import React from 'react'
@@ -14,11 +11,9 @@ initLocalStorage()
 
 ReactDOM.render(
   <React.StrictMode>
-    <ConfigProvider locale={zhCN}>
-      <Provider store={store}>
-        <Router />
-      </Provider>
-    </ConfigProvider>
+    <Provider store={store}>
+      <Router />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 )

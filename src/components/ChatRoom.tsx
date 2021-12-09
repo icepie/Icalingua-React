@@ -1,5 +1,5 @@
+import Snackbar from '@mui/material/Snackbar'
 import { getMessages } from 'adapters/room'
-import { message } from 'antd'
 import { addMessage, putMessages } from 'app/features/room/roomSlices'
 import { RootState, useAppDispatch, useAppSelector } from 'app/store'
 import { events } from 'providers/eventProvider'
@@ -35,8 +35,8 @@ export default function ChatRoom() {
       scrollToButton() // 滚动到底部
     }
 
-    message.loading({ content: '正在加载聊天记录...', key: 'chat_message' })
-    fetchMessages().then(() => message.destroy('chat_message'))
+    // message.loading({ content: '正在加载聊天记录...', key: 'chat_message' })
+    fetchMessages() // .then(() => message.destroy('chat_message'))
     attachEvents()
 
     return () => {
@@ -46,6 +46,12 @@ export default function ChatRoom() {
 
   return (
     <div>
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={messages.length === 0}
+        message="正在加载聊天记录..."
+      />
+
       <div className={styles.chatTopBar}>
         <span className={styles.chatTopBarAvatar}>
           <img src={room.avatar} alt="avatar" />

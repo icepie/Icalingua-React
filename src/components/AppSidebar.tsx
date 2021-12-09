@@ -1,5 +1,6 @@
-import { SearchOutlined } from '@ant-design/icons'
-import { Input } from 'antd'
+import SearchIcon from '@mui/icons-material/Search'
+import Button from '@mui/material/Button'
+import Input from '@mui/material/Input'
 import { RootState, useAppSelector } from 'app/store'
 import React, { useState } from 'react'
 import { getUserAvatarUrl } from 'utils/apis'
@@ -33,22 +34,22 @@ export default function AppSidebar() {
           </div>
           <div className={styles.searchBox}>
             <Input placeholder="Search" className={styles.searchInput} onChange={handleSearch} />
-            <SearchOutlined className={styles.searchIcon} />
+            <SearchIcon className={styles.searchIcon} />
           </div>
         </div>
 
         <div className={styles.foldersTabs}>
           {/* TODO: 支持自定义文件夹 */}
           <div>
-            <button className={folder === 'All' ? styles.folderActive : ''} onClick={() => setFolder('All')}>
+            <Button className={folder === 'All' ? styles.folderActive : ''} onClick={() => setFolder('All')}>
               全部会话
-            </button>
-            <button className={folder === 'Friends' ? styles.folderActive : ''} onClick={() => setFolder('Friends')}>
+            </Button>
+            <Button className={folder === 'Friends' ? styles.folderActive : ''} onClick={() => setFolder('Friends')}>
               好友
-            </button>
-            <button className={folder === 'Group' ? styles.folderActive : ''} onClick={() => setFolder('Group')}>
+            </Button>
+            <Button className={folder === 'Group' ? styles.folderActive : ''} onClick={() => setFolder('Group')}>
               群组
-            </button>
+            </Button>
           </div>
         </div>
       </div>
