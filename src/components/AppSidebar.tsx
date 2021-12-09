@@ -1,5 +1,6 @@
 import SearchIcon from '@mui/icons-material/Search'
-import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import Input from '@mui/material/Input'
 import { RootState, useAppSelector } from 'app/store'
 import React, { useState } from 'react'
 import { getUserAvatarUrl } from 'utils/apis'
@@ -12,7 +13,7 @@ export default function AppSidebar() {
   const [folder, setFolder] = useState<FolderType>('All')
   const [search, setSearch] = useState<string | undefined>(undefined)
   const onlineData = useAppSelector((state: RootState) => state.account.onlineData)
-  
+
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     if (value.length > 0) {
@@ -21,7 +22,7 @@ export default function AppSidebar() {
       setSearch(undefined)
     }
   }
-  
+
   return (
     <div className={styles.chatSidebar}>
       <div className={styles.sidebarHead}>
@@ -32,27 +33,27 @@ export default function AppSidebar() {
             </span>
           </div>
           <div className={styles.searchBox}>
-            <TextField placeholder="Search" className={styles.searchInput} onChange={handleSearch} />
+            <Input placeholder="Search" className={styles.searchInput} onChange={handleSearch} />
             <SearchIcon className={styles.searchIcon} />
           </div>
         </div>
-        
+
         <div className={styles.foldersTabs}>
           {/* TODO: 支持自定义文件夹 */}
           <div>
-            <button className={folder === 'All' ? styles.folderActive : ''} onClick={() => setFolder('All')}>
+            <Button className={folder === 'All' ? styles.folderActive : ''} onClick={() => setFolder('All')}>
               全部会话
-            </button>
-            <button className={folder === 'Friends' ? styles.folderActive : ''} onClick={() => setFolder('Friends')}>
+            </Button>
+            <Button className={folder === 'Friends' ? styles.folderActive : ''} onClick={() => setFolder('Friends')}>
               好友
-            </button>
-            <button className={folder === 'Group' ? styles.folderActive : ''} onClick={() => setFolder('Group')}>
+            </Button>
+            <Button className={folder === 'Group' ? styles.folderActive : ''} onClick={() => setFolder('Group')}>
               群组
-            </button>
+            </Button>
           </div>
         </div>
       </div>
-      
+
       <div className={styles.sidebarContent}>
         <SidebarRooms folder={folder} search={search} />
       </div>

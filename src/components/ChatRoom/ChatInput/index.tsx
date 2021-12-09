@@ -1,3 +1,4 @@
+import Input from '@mui/material/Input'
 import { sendMessage } from 'adapters/room'
 import React, { useRef } from 'react'
 import styles from './input.module.scss'
@@ -23,8 +24,7 @@ export default function ChatInput({ roomId }: { roomId: number }) {
   return (
     <div className={styles.chatInputField}>
       <div className={styles.chatInputContainer}>
-        {/* TODO: 居然不支持自适应高度？？？ */}
-        <textarea placeholder="Type a message..." ref={input} onKeyUp={handleKeyUp} />
+        <Input className={styles.chatInput} placeholder="请输入消息" onKeyUp={handleKeyUp} inputRef={input} />
       </div>
       <button onClick={handleSubmit}>Send</button>
     </div>

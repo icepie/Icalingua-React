@@ -2,7 +2,6 @@ import { sign } from 'noble-ed25519'
 import { io, Socket } from 'socket.io-client'
 import { Message, Room } from 'types/RoomTypes'
 import { BridgeVersionInfo, OnlineData, OnlineDataBridge } from 'types/RuntimeTypes'
-import { logger, newLogProps } from 'utils/logger'
 import { getConfig } from './configProvider'
 import { events } from './eventProvider'
 
@@ -101,7 +100,7 @@ export function createBridge() {
   let bridgeVersion: BridgeVersionInfo
   let bot: Bridge
 
-  logger.info(newLogProps('创建Bridge连接...'))
+  // logger.info(newLogProps('创建Bridge连接...'))
 
   // 连接服务器
   bridgeSocket = io(getConfig().server, { transports: ['websocket'] })
