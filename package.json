@@ -26,6 +26,7 @@
     "oicq": "^1.21.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.21.2",
     "react-redux": "^7.2.6",
     "react-router": "^6.0.2",
     "react-router-dom": "^6.0.2",
