@@ -1,5 +1,3 @@
-@import "src/styles/colors";
-
 .rooms {
   display: flex;
   flex-direction: column;
@@ -16,7 +14,7 @@
     border-radius: 16px;
 
     &:hover {
-      background: $light-secondary-text-color;
+      background: var(--light-secondary-text-color);
     }
 
     .roomAvatar {
@@ -48,7 +46,7 @@
 
       .lastMessage {
         margin-top: 6px;
-        color: $secondary-text-color;
+        color: var(--secondary-text-color);
 
         // span {
         //   color: $primary-text-color;

@@ -4,7 +4,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import Router from './routers'
-import './styles/global.scss'
+import './styles/global.css'
 
 // 初始化数据
 initLocalStorage()
