@@ -1,0 +1,109 @@
+:root {
+  --body-background-color: #ffffff;
+  --message-background-color: var(--surface-color);
+  --message-checkbox-border-color: #ffffff;
+  --message-checkbox-color: #61c642;
+  --poll-circle-color: var(--border-color);
+  --background-color: #ffffff;
+  --border-color: #dfe1e5;
+  --danger-color: #df3f40;
+  --link-color: #00488f;
+  --primary-color: #3390ec;
+  --ripple-color: rgba(0, 0, 0, .08);
+  --scrollbar-color: rgba(0, 0, 0, .2);
+  --secondary-color: #c4c9cc;
+  --surface-color: #ffffff;
+  --avatar-color-bottom: var(--peer-avatar-blue-bottom);
+  --avatar-color-top: var(--peer-avatar-blue-top);
+  --background-color-true: #f4f4f5;
+  --light-danger-color: rgba(223, 63, 64, 0.08);
+  --dark-message-out-background-color: #d9ffb5;
+  --light-message-out-background-color: rgba(238, 255, 222, 0.08);
+  --avatar-online-color: #0ac630;
+  --message-out-audio-play-button-color: #ffffff;
+  --message-out-background-color: #eeffde;
+  --message-out-link-color: var(--link-color);
+  --message-out-primary-color: #4fae4e;
+  --message-out-status-color: var(--message-out-primary-color);
+  --chatlist-pinned-color: #a2abb2;
+  --dark-primary-color: #157ce1;
+  --light-primary-color: rgba(51, 144, 236, 0.08);
+  --input-search-background-color: #ffffff;
+  --input-search-border-color: #dfe1e5;
+  --message-secondary-color: var(--secondary-color);
+  --light-secondary-text-color: rgba(112, 117, 121, 0.08);
+  --chatlist-status-color: var(--avatar-online-color);
+  --badge-text-color: #ffffff;
+  --primary-text-color: #000000;
+  --secondary-text-color: #707579;
+}
+
+:root {
+  --vh: 1vh;
+  --hover-alpha: 0.08;
+  --peer-avatar-blue-bottom: #2a9ef1;
+  --peer-avatar-blue-top: #72d5fd;
+  --peer-avatar-cyan-bottom: #28c9b7;
+  --peer-avatar-cyan-top: #53edd6;
+  --peer-avatar-green-bottom: #54cb68;
+  --peer-avatar-green-top: #a0de7e;
+  --peer-avatar-orange-bottom: #ffa85c;
+  --peer-avatar-orange-top: #ffcd6a;
+  --peer-avatar-pink-bottom: #d669ed;
+  --peer-avatar-pink-top: #e0a2f3;
+  --peer-avatar-red-bottom: #ff516a;
+  --peer-avatar-red-top: #ff885e;
+  --peer-avatar-violet-bottom: #665fff;
+  --peer-avatar-violet-top: #82b1ff;
+  --chatlist-badge-transition-in: .2s cubic-bezier(.35, .35, .47, 1);
+  --chatlist-badge-transition-out: .2s cubic-bezier(.35, .35, .7, 1);
+  --z-below: -1;
+  --message-beside-button-margin: calc((var(--message-beside-button-size) + .5rem) * -1);
+  --message-beside-button-size: 2.375rem;
+  --messages-container-width: 728px;
+  --btn-corner-transition: .2s cubic-bezier(.34, 1.56, .64, 1);
+  --message-handhelds-margin: 5.5625rem;
+  --slide-header-transition: .4s ease-in-out;
+  --line-height: 1.3125;
+  --message-highlightning-color: hsla(85.5319, 36.9171%, 40.402%, .4);
+  --btn-menu-transition: .2s cubic-bezier(.4, 0, .2, 1);
+  --disabled-opacity: .3;
+  --messages-secondary-text-size: calc(var(--messages-text-size) - 2px);
+  --transition-standard-easing: cubic-bezier(.4, .0, .2, 1);
+  --transition-standard-in: var(--transition-standard-in-time) var(--transition-standard-easing);
+  --transition-standard-in-time: .3s;
+  --transition-standard-out: var(--transition-standard-out-time) var(--transition-standard-easing);
+  --transition-standard-out-time: .25s;
+  --esg-sticker-size: 80px;
+  --messages-text-size: 16px;
+  --message-time-background: rgba(0, 0, 0, .35);
+  --esg-transition: var(--btn-menu-transition);
+  --layer-transition: .2s cubic-bezier(.4, .0, .2, 1);
+  --pm-transition: .2s ease-in-out;
+  --tabs-transition: .25s ease-in-out;
+  --popup-transition-function: cubic-bezier(.4, 0, .2, 1);
+  --popup-transition-time: .15s;
+  --round-video-size: 280px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  background-color: var(--body-background-color);
+  color: var(--primary-text-color);
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+  'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
