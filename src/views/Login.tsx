@@ -27,29 +27,8 @@ export default function Login() {
         <h1 style={{ textAlign: 'center' }}>连接服务器</h1>
         <TextField label="服务器地址" name="server" />
         <TextField label="私钥" name="privateKey" />
-
         <Button onClick={login}>登录</Button>
       </Grid>
     </form>
   )
-  // return (
-  //  <div>
-  //    <Row className="box" justify="center">
-  //      <Col span={8}>
-  //        <Form layout="vertical" form={form}>
-  //          <Form.Item label="服务器地址" name="server">
-  //            <Input />
-  //          </Form.Item>
-  //          <Form.Item label="私钥" name="privateKey">
-  //            <Input />
-  //          </Form.Item>
-  //
-  //          <Button htmlType="submit" onClick={login}>
-  //            登录
-  //          </Button>
-  //        </Form>
-  //      </Col>
-  //    </Row>
-  //  </div>
-  // )
 }

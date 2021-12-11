@@ -51,7 +51,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className="layout" tabIndex={-1} onKeyUp={handleKeyUp}>
+    <div tabIndex={-1} onKeyUp={handleKeyUp} style={{ height: '100%' }}>
       {!loading ? (
         <>
           <AppSidebar />
