@@ -1,6 +1,5 @@
-import SearchIcon from '@mui/icons-material/Search'
-import Button from '@mui/material/Button'
-import Input from '@mui/material/Input'
+import { Search as SearchIcon } from '@mui/icons-material'
+import { Button, Input } from '@mui/material'
 import { RootState, useAppSelector } from 'app/store'
 import React, { useState } from 'react'
 import { getUserAvatarUrl } from 'utils/apis'

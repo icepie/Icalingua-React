@@ -1,4 +1,4 @@
-import Snackbar from '@mui/material/Snackbar'
+import { Snackbar } from '@mui/material'
 import { getMessages } from 'adapters/room'
 import { addMessage, putMessages } from 'app/features/room/roomSlices'
 import { RootState, useAppDispatch, useAppSelector } from 'app/store'

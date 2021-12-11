@@ -1,4 +1,4 @@
-import Input from '@mui/material/Input'
+import { Input } from '@mui/material'
 import { sendMessage } from 'adapters/room'
 import React, { useRef } from 'react'
 import styles from './input.module.scss'
