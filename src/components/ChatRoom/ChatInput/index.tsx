@@ -8,7 +8,6 @@ export default function ChatInput({ roomId }: { roomId: number }) {
 
   const handleSubmit = () => {
     if (input.current?.value.length) {
-      console.log({ roomId: roomId, content: input.current.value })
       sendMessage({ roomId: roomId, content: input.current.value, at: [] })
     }
   }
